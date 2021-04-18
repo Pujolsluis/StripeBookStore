@@ -21,6 +21,8 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "StripeBookStore.Shared", "S
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StripeBookStore.Functions", "StripeBookStore.Functions\StripeBookStore.Functions.csproj", "{056FF098-71D0-46F3-80DD-BD4C802C4057}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StripeBookStore.API", "StripeBookStore.Functions\StripeBookStore.API\StripeBookStore.API.csproj", "{72A63944-2767-4180-AB5B-B9780F06651F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -91,6 +93,18 @@ Global
 		{056FF098-71D0-46F3-80DD-BD4C802C4057}.Debug|iPhone.Build.0 = Debug|Any CPU
 		{056FF098-71D0-46F3-80DD-BD4C802C4057}.Release|iPhone.ActiveCfg = Release|Any CPU
 		{056FF098-71D0-46F3-80DD-BD4C802C4057}.Release|iPhone.Build.0 = Release|Any CPU
+		{72A63944-2767-4180-AB5B-B9780F06651F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72A63944-2767-4180-AB5B-B9780F06651F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72A63944-2767-4180-AB5B-B9780F06651F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72A63944-2767-4180-AB5B-B9780F06651F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72A63944-2767-4180-AB5B-B9780F06651F}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{72A63944-2767-4180-AB5B-B9780F06651F}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{72A63944-2767-4180-AB5B-B9780F06651F}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{72A63944-2767-4180-AB5B-B9780F06651F}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{72A63944-2767-4180-AB5B-B9780F06651F}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{72A63944-2767-4180-AB5B-B9780F06651F}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{72A63944-2767-4180-AB5B-B9780F06651F}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{72A63944-2767-4180-AB5B-B9780F06651F}.Release|iPhone.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -105,5 +119,6 @@ Global
 		{A73E4BD3-7A1F-4A82-9443-6BA0A32ACAB3} = {21396BFF-17A5-4AC5-A7AD-8BE3EDF4B3B7}
 		{B983BB5E-E08E-495F-BB55-E5F4B6CA3CBC} = {0FED6A2C-E262-4965-A1F0-500E18F158A6}
 		{056FF098-71D0-46F3-80DD-BD4C802C4057} = {5AD066C0-25F0-4582-B9E8-3ECB9296681A}
+		{72A63944-2767-4180-AB5B-B9780F06651F} = {5AD066C0-25F0-4582-B9E8-3ECB9296681A}
 	EndGlobalSection
 EndGlobal

@@ -12,6 +12,10 @@ namespace StripeBookStore.Functions
 {
     public static class GetStripeToken
     {
+        readonly static string _stripeToken_Test = Environment.GetEnvironmentVariable("StripeToken_Test");
+        readonly static string _stripeToken = Environment.GetEnvironmentVariable("StripeToken");
+
+
         [FunctionName(nameof(GetStripeToken))]
         public static async Task<IActionResult> Run(
             [HttpTrigger(AuthorizationLevel.Anonymous, "get")] HttpRequest req,

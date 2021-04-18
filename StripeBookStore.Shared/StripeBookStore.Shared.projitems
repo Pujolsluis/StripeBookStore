@@ -12,5 +12,10 @@
     <Folder Include="$(MSBuildThisFileDirectory)Models\" />
     <Folder Include="$(MSBuildThisFileDirectory)Services\" />
     <Folder Include="$(MSBuildThisFileDirectory)Interfaces\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Configuration\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Configuration\StripeOptions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\PublicKeyResponse.cs" />
   </ItemGroup>
 </Project>
