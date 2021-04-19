@@ -1,28 +1,32 @@
 ﻿using System;
+using Prism;
+using Prism.DryIoc;
+using Prism.Ioc;
+using StripeBookStore.Pages;
+using StripeBookStore.ViewModels;
+using Xamarin.Essentials.Implementation;
+using Xamarin.Essentials.Interfaces;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace StripeBookStore
 {
-    public partial class App : Application
+    public partial class App : PrismApplication
     {
-        public App()
+        public App(IPlatformInitializer initializer = null) : base(initializer) { }
+
+        protected override void OnInitialized()
         {
             InitializeComponent();
-
-            MainPage = new MainPage();
+            NavigationService.NavigateAsync(NavigationConstants.BooksCatalog);
         }
 
-        protected override void OnStart()
+        protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
-        }
+            //Navigation
+            containerRegistry.RegisterForNavigation<BooksCatalogPage, BooksCatalogPageViewModel>();
 
-        protected override void OnSleep()
-        {
-        }
-
-        protected override void OnResume()
-        {
+            //Services
+            containerRegistry.RegisterSingleton<IPreferences, PreferencesImplementation>();
         }
     }
 }

@@ -1,8 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<Application xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="StripeBookStore.App">
-    <Application.Resources>
-
-    </Application.Resources>
-</Application>
+<Prism:PrismApplication
+    x:Class="StripeBookStore.App"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Prism="clr-namespace:Prism.DryIoc;assembly=Prism.DryIoc.Forms">
+    <Prism:PrismApplication.Resources>
+        <!--  App colors  -->
+        <Color x:Key="Primary">#01A07F</Color>
+        <Color x:Key="PrimaryDark">#007F69</Color>
+        <Color x:Key="Secondary">#ffc107</Color>
+        <Color x:Key="Accent">#E2D479</Color>
+    </Prism:PrismApplication.Resources>
+</Prism:PrismApplication>

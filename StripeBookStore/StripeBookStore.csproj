@@ -13,5 +13,15 @@
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
     <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
+    <PackageReference Include="Prism.DryIoc.Forms" Version="8.0.0.1909" />
+    <PackageReference Include="AsyncAwaitBestPractices" Version="5.1.0" />
+    <PackageReference Include="Xamarin.Essentials.Interfaces" Version="1.6.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\" />
+    <Folder Include="ViewModels\" />
+    <Folder Include="Pages\" />
+    <Folder Include="ViewModels\Base\" />
+    <Folder Include="Helpers\" />
   </ItemGroup>
 </Project>

@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="StripeBookStore.Pages.BooksCatalogPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    ios:Page.UseSafeArea="true">
+    <ContentPage.Content>
+        <StackLayout Padding="16">
+            <Label
+                BackgroundColor="Coral"
+                HeightRequest="52"
+                HorizontalTextAlignment="Center"
+                Text="Welcome to the &#10; Stripe Book Shop"
+                VerticalTextAlignment="Center" />
+            <ActivityIndicator
+                IsRunning="{Binding IsBusy}"
+                VerticalOptions="CenterAndExpand"
+                Color="SteelBlue" />
+            <Label
+                Margin="0,8,0,0"
+                HorizontalTextAlignment="End"
+                Text="{Binding CustomerName}"
+                VerticalOptions="EndAndExpand" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
