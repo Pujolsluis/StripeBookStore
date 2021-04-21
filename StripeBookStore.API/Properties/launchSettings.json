@@ -12,7 +12,7 @@
     "StripeBookStore.API": {
         "commandName": "Project",
         "launchBrowser": true,
-        "launchUrl": "api/payments/public-keys",
+        "launchUrl": "swagger",
         "applicationUrl": "http://localhost:42424",
         "environmentVariables": {
             "ASPNETCORE_ENVIRONMENT": "Development"

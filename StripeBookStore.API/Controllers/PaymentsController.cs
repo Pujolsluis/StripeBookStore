@@ -13,6 +13,8 @@ using System.Linq;
 namespace StripeBookStore.API.Controllers
 {
     [ApiController]
+    [Consumes(MediaTypeNames.Application.Json)]
+    [Produces(MediaTypeNames.Application.Json)]
     [Route("api/[controller]")]
     public class PaymentsController : Controller
     {
@@ -27,8 +29,12 @@ namespace StripeBookStore.API.Controllers
             _client = new StripeClient(_options.Value.SecretKey);
         }
 
+        /// <summary>
+        /// Provides Stripe API Keys
+        /// </summary>
+        /// <returns></returns>
         [HttpGet("public-keys")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(PublicKeyResponse))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public ActionResult<PublicKeyResponse> GetPublicKeys()
         {
@@ -43,6 +49,10 @@ namespace StripeBookStore.API.Controllers
             };
         }
 
+        /// <summary>
+        /// Returns the List of Customers associated to our Stripe Account
+        /// </summary>
+        /// <returns></returns>
         [HttpGet("customers")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<ActionResult<StripeList<Customer>>> GetAllCustomers()
@@ -57,6 +67,10 @@ namespace StripeBookStore.API.Controllers
             return await customerService.ListAsync(options);
         }
 
+        /// <summary>
+        /// Returns the List of Products
+        /// </summary>
+        /// <returns></returns>
         [HttpGet("products")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<ActionResult<StripeList<Product>>> GetAllProducts()
@@ -72,6 +86,10 @@ namespace StripeBookStore.API.Controllers
             return await productService.ListAsync(options);
         }
 
+        /// <summary>
+        /// Return the list of Payment Intents
+        /// </summary>
+        /// <returns></returns>
         [HttpGet("payment-intents")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<ActionResult<StripeList<PaymentIntent>>> GetAllPaymentIntents()
@@ -87,7 +105,8 @@ namespace StripeBookStore.API.Controllers
             return await paymentIntentService.ListAsync(options);
         }
 
-        public async Task<ActionResult<StripeList<Price>>> GetAllPrices()
+        
+        private async Task<ActionResult<StripeList<Price>>> GetAllPrices()
         {
             _logger.LogDebug($"GetAllPaymentIntents Requested by Client");
 
@@ -100,8 +119,18 @@ namespace StripeBookStore.API.Controllers
             return await priceService.ListAsync(options);
         }
 
+        /// <summary>
+        /// Creates a Payment Intent for one of our Products
+        /// </summary>
+        /// <param name="bookPaymentIntent"></param>
+        /// <returns>Client secret associated to the newly created payment intent</returns>
+        /// <response code="200">Returns Payment Intent client secret</response>
+        /// <response code="400">If item is null or has an invalid state</response>
+        /// <response code="404">If associated price for product in Payment Intent is not found</response>
         [HttpPost("payment-intent")]
+        [Consumes(MediaTypeNames.Application.Json)]
         [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<string>> CreateProductPaymentIntent([FromBody] BookStorePaymentIntent bookPaymentIntent)
         {
@@ -131,4 +160,6 @@ namespace StripeBookStore.API.Controllers
             return paymentIntent.ClientSecret;
         }
     }
+
+    
 }

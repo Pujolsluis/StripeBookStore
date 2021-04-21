@@ -8,7 +8,7 @@ namespace StripeBookStore.Shared.Constants
     {
         public const string StripeBookStoreBaseUrl = "http://localhost:42424/";
 
-        public static readonly List<Book> BooksCollection = new List<Book>()
+        public static readonly List<IStoreProduct> BooksCollection = new List<IStoreProduct>()
         {
             new Book()
             {

@@ -11,12 +11,17 @@ namespace StripeBookStore.Shared.Models
         public long Price { get; set; }
     }
 
-    public class BookStorePaymentIntent : Book
+    public class BookStorePaymentIntent : IStoreProduct
     {
         public BookStorePaymentIntent(string sku)
         {
             Sku = sku;
         }
+        /// <summary>
+        /// Product SKU
+        /// </summary>
+        /// <example>prod_testId</example>
+        public string Sku { get; set; }
     }
 
     public interface IStoreProduct
