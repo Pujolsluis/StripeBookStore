@@ -403,3 +403,6 @@ ASALocalRun/
 
 # Local History for Visual Studio
 .localhistory/
+
+# Local Environment Variables for API
+StripeBookStore.Api/.env

@@ -13,9 +13,15 @@
     <Folder Include="$(MSBuildThisFileDirectory)Services\" />
     <Folder Include="$(MSBuildThisFileDirectory)Interfaces\" />
     <Folder Include="$(MSBuildThisFileDirectory)Configuration\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Constants\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Configuration\StripeOptions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\PublicKeyResponse.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\BaseApiService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)RefitExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Interfaces\IStripeBookStoreApi.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Constants\StripeBookStoreConstants.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Book.cs" />
   </ItemGroup>
 </Project>

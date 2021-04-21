@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -16,6 +17,8 @@
     <PackageReference Include="Prism.DryIoc.Forms" Version="8.0.0.1909" />
     <PackageReference Include="AsyncAwaitBestPractices" Version="5.1.0" />
     <PackageReference Include="Xamarin.Essentials.Interfaces" Version="1.6.1" />
+    <PackageReference Include="Refit.Newtonsoft.Json" Version="6.0.38" />
+    <PackageReference Include="Polly" Version="7.2.2" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\" />
@@ -24,4 +27,5 @@
     <Folder Include="ViewModels\Base\" />
     <Folder Include="Helpers\" />
   </ItemGroup>
+  <Import Project="..\StripeBookStore.Shared\StripeBookStore.Shared.projitems" Label="Shared" Condition="Exists('..\StripeBookStore.Shared\StripeBookStore.Shared.projitems')" />
 </Project>

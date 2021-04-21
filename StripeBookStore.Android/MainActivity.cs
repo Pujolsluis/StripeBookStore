@@ -18,14 +18,13 @@ namespace StripeBookStore.Droid
 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
-            LoadApplication(new AndroidInitializer());
+            LoadApplication(new App(new AndroidInitializer()));
         }
 
         public class AndroidInitializer : IPlatformInitializer
         {
             public void RegisterTypes(IContainerRegistry containerRegistry)
             {
-                throw new NotImplementedException();
             }
         }
 
