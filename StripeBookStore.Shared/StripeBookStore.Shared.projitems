@@ -23,5 +23,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Interfaces\IStripeBookStoreApi.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Constants\StripeBookStoreConstants.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Book.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Interfaces\IPaymentService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\PaymentRequest.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Interfaces\IStoreProduct.cs" />
   </ItemGroup>
 </Project>

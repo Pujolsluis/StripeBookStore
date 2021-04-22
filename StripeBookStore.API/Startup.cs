@@ -17,6 +17,9 @@ using Swashbuckle.AspNetCore.Swagger;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
 using System.IO;
+using Stripe;
+using StripeBookStore.Shared.Interfaces;
+using StripeBookStore.API.Services;
 
 namespace StripeBookStore.API
 {
@@ -62,7 +65,8 @@ namespace StripeBookStore.API
                     NamingStrategy = new CamelCaseNamingStrategy(),
                 };
             });
-
+            services.AddTransient<IStripeClient>(serviceProvider => new StripeClient(Environment.GetEnvironmentVariable("STRIPE_SECRET_KEY")));
+            services.AddTransient<IPaymentService, StripeApiPaymentService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
