@@ -19,6 +19,8 @@
     <PackageReference Include="Xamarin.Essentials.Interfaces" Version="1.6.1" />
     <PackageReference Include="Refit.Newtonsoft.Json" Version="6.0.38" />
     <PackageReference Include="Polly" Version="7.2.2" />
+    <PackageReference Include="Stripe.net" Version="39.45.0" />
+    <PackageReference Include="Sharpnado.MaterialFrame" Version="1.1.4" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\" />

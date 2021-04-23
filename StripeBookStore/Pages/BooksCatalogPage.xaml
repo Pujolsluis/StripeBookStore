@@ -4,24 +4,70 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-    ios:Page.UseSafeArea="true">
+    xmlns:rv="clr-namespace:Sharpnado.MaterialFrame;assembly=Sharpnado.MaterialFrame"
+    Padding="0,16,0,0"
+    ios:Page.UseSafeArea="false"
+    BackgroundColor="WhiteSmoke">
     <ContentPage.Content>
-        <StackLayout Padding="16">
-            <Label
-                BackgroundColor="Coral"
-                HeightRequest="52"
-                HorizontalTextAlignment="Center"
-                Text="Welcome to the &#10; Stripe Book Shop"
-                VerticalTextAlignment="Center" />
-            <ActivityIndicator
-                IsRunning="{Binding IsBusy}"
-                VerticalOptions="CenterAndExpand"
-                Color="SteelBlue" />
-            <Label
-                Margin="0,8,0,0"
-                HorizontalTextAlignment="End"
-                Text="{Binding CustomerName}"
-                VerticalOptions="EndAndExpand" />
-        </StackLayout>
+        <CollectionView ItemsSource="{Binding BooksCatalog}">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid ColumnDefinitions="16, *, 16" RowDefinitions="16, *">
+                        <rv:MaterialFrame
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            BackgroundColor="WhiteSmoke"
+                            Elevation="4"
+                            HasShadow="False"
+                            MaterialTheme="Light"
+                            Visual="Material">
+                            <Grid ColumnDefinitions="92, 16, *, *" RowDefinitions="16, 14, 48, 32">
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.RowSpan="4"
+                                    Grid.Column="0"
+                                    BackgroundColor="Orange"
+                                    Text="{Binding Name}" />
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="2"
+                                    Grid.ColumnSpan="2"
+                                    BackgroundColor="Red"
+                                    FontSize="16"
+                                    Text="{Binding Name}" />
+                                <Label
+                                    Grid.Row="1"
+                                    Grid.Column="2"
+                                    Grid.ColumnSpan="1"
+                                    BackgroundColor="Orange"
+                                    FontSize="Small"
+                                    Text="{Binding Genre}" />
+                                <Label
+                                    Grid.Row="2"
+                                    Grid.Column="2"
+                                    Grid.ColumnSpan="2"
+                                    FontSize="Caption"
+                                    LineBreakMode="TailTruncation"
+                                    MaxLines="2"
+                                    Text="{Binding Description}" />
+                                <Label
+                                    Grid.Row="3"
+                                    Grid.Column="2"
+                                    Text="{Binding Price, Converter={StaticResource LongToCurrencyConverter}}" />
+                                <Button
+                                    Grid.Row="3"
+                                    Grid.Column="3"
+                                    BackgroundColor="Teal"
+                                    Text="BUY"
+                                    TextColor="White" />
+                            </Grid>
+                        </rv:MaterialFrame>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
     </ContentPage.Content>
 </ContentPage>

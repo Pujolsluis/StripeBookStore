@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Stripe;
-using StripeBookStore.Shared.Models;
+using StripeBookStore.Shared.Models.DTOs;
 
 namespace StripeBookStore.Shared.Interfaces
 {

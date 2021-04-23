@@ -2,7 +2,7 @@
 using StripeBookStore.Shared.Configuration;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
-using StripeBookStore.Shared.Models;
+using StripeBookStore.Shared.Models.DTOs;
 using Stripe;
 using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;

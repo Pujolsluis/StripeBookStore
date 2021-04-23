@@ -2,7 +2,7 @@
 using System.Net.Http;
 using System.Threading.Tasks;
 using Refit;
-using StripeBookStore.Shared.Models;
+using StripeBookStore.Shared.Models.DTOs;
 
 namespace StripeBookStore.Shared.Interfaces
 {
@@ -10,16 +10,16 @@ namespace StripeBookStore.Shared.Interfaces
     public interface IStripeBookStoreApi
     {
         [Get("/api/tokens/public-keys")]
-        Task<HttpResponseMessage> GetStripePublicKeys(string startingAfter, int pageSize);
+        Task<HttpResponseMessage> GetStripePublicKeys(string startingAfter = "", int pageSize = 25);
 
         [Get("/api/customers?startingAfter={startingAfter}&pageSize={pageSize}")]
-        Task<HttpResponseMessage> GetCustomers(string startingAfter, int pageSize);
+        Task<HttpResponseMessage> GetCustomers(string startingAfter = "", int pageSize = 25);
 
         [Get("/api/products?startingAfter={startingAfter}&pageSize={pageSize}")]
-        Task<HttpResponseMessage> GetProducts(string startingAfter, int pageSize);
+        Task<HttpResponseMessage> GetProducts(string startingAfter = "", int pageSize = 25);
 
         [Get("/api/paymentIntents?startingAfter={startingAfter}&pageSize={pageSize}")]
-        Task<HttpResponseMessage> GetPaymentIntents(string startingAfter, int pageSize);
+        Task<HttpResponseMessage> GetPaymentIntents(string startingAfter = "", int pageSize = 25);
 
         [Post("/api/paymentIntents")]
         Task<HttpResponseMessage> PostPaymentIntent([Body] PaymentRequest request);

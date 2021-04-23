@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace StripeBookStore.Shared.Models
+﻿namespace StripeBookStore.Shared.Models.DTOs
 {
     public class PaymentRequest
     {
@@ -13,14 +11,12 @@ namespace StripeBookStore.Shared.Models
         /// Product SKU
         /// </summary>
         /// <example>prod_testId</example>
-        [Required]
         public string Sku { get; }
 
         /// <summary>
         /// Customer for Product
         /// </summary>
         /// <example>cus_testId</example>
-        [Required]
         public string Customer { get; }
     }
 }

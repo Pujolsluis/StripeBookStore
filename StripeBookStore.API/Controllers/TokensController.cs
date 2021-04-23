@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using StripeBookStore.Shared.Configuration;
-using StripeBookStore.Shared.Models;
+using StripeBookStore.Shared.Models.DTOs;
 
 namespace StripeBookStore.API.Controllers
 {

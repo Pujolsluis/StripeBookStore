@@ -21,6 +21,9 @@ namespace StripeBookStore
         protected override void OnInitialized()
         {
             InitializeComponent();
+
+            Sharpnado.MaterialFrame.Initializer.Initialize(loggerEnable: false, false);
+
             NavigationService.NavigateAsync(NavigationConstants.BooksCatalog);
         }
 

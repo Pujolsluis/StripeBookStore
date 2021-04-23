@@ -1,5 +1,5 @@
 ﻿using System;
-namespace StripeBookStore.Shared.Models
+namespace StripeBookStore.Shared.Models.DTOs
 {
     public class PublicKeyResponse
     {

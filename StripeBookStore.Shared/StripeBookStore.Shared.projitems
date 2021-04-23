@@ -14,17 +14,18 @@
     <Folder Include="$(MSBuildThisFileDirectory)Interfaces\" />
     <Folder Include="$(MSBuildThisFileDirectory)Configuration\" />
     <Folder Include="$(MSBuildThisFileDirectory)Constants\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Models\DTOs\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Configuration\StripeOptions.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\PublicKeyResponse.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\BaseApiService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)RefitExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Interfaces\IStripeBookStoreApi.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Constants\StripeBookStoreConstants.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Book.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Interfaces\IPaymentService.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\PaymentRequest.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Interfaces\IStoreProduct.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\DTOs\PaymentRequest.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\DTOs\PublicKeyResponse.cs" />
   </ItemGroup>
 </Project>

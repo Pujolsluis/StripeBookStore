@@ -5,7 +5,7 @@ using Microsoft.Extensions.Options;
 using Stripe;
 using StripeBookStore.Shared.Configuration;
 using StripeBookStore.Shared.Interfaces;
-using StripeBookStore.Shared.Models;
+using StripeBookStore.Shared.Models.DTOs;
 using System.Linq;
 
 namespace StripeBookStore.API.Services

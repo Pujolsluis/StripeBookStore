@@ -9,7 +9,7 @@ using Microsoft.Extensions.Options;
 using Stripe;
 using StripeBookStore.Shared.Configuration;
 using StripeBookStore.Shared.Interfaces;
-using StripeBookStore.Shared.Models;
+using StripeBookStore.Shared.Models.DTOs;
 
 namespace StripeBookStore.API.Controllers
 {

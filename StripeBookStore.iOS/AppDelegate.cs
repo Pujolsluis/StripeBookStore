@@ -5,6 +5,7 @@ using System.Linq;
 using Foundation;
 using Prism;
 using Prism.Ioc;
+using Sharpnado.MaterialFrame.iOS;
 using UIKit;
 
 namespace StripeBookStore.iOS
@@ -28,6 +29,7 @@ namespace StripeBookStore.iOS
             Xamarin.Calabash.Start();
 #endif
             global::Xamarin.Forms.Forms.Init();
+            iOSMaterialFrameRenderer.Init();
             LoadApplication(new App(new iOSInitializer()));
 
             return base.FinishedLaunching(app, options);
