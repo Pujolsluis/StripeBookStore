@@ -54,6 +54,12 @@ namespace StripeBookStore.ViewModels
             set => SetProperty(ref _customerName, value);
         }
 
+        private string _pageTitle = "Book Catalog";
+        public string PageTitle
+        {
+            get => _pageTitle;
+        }
+
         bool IsFirstTime
         {
             get => _preferences.Get(nameof(IsFirstTime), true);

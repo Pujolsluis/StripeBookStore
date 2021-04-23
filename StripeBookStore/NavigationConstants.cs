@@ -3,7 +3,7 @@ namespace StripeBookStore
 {
     public static class NavigationConstants
     {
-        public const string BooksCatalog = "BooksCatalogPage";
+        public const string BooksCatalog = "NavigationPage/BooksCatalogPage";
     }
 
     public static class NavigationDataConstants

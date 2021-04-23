@@ -9,5 +9,6 @@ namespace StripeBookStore.Shared.Models
         public string Description { get; set; }
         public string Genre { get; set; }
         public long Price { get; set; }
+        public string ImageUri { get; set; }
     }
 }

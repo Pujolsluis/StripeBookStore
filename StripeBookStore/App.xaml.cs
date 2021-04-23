@@ -30,6 +30,7 @@ namespace StripeBookStore
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             //Navigation
+            containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<BooksCatalogPage, BooksCatalogPageViewModel>();
 
             IStripeBookStoreApi stripeBookStoreApiClient = RefitExtensions.For<IStripeBookStoreApi>(BaseApiService.CreateHttpClient(StripeBookStoreConstants.StripeBookStoreBaseUrl));

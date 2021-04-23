@@ -30,6 +30,8 @@ namespace StripeBookStore.iOS
 #endif
             global::Xamarin.Forms.Forms.Init();
             iOSMaterialFrameRenderer.Init();
+            FFImageLoading.Forms.Platform.CachedImageRenderer.Init();
+            FFImageLoading.Forms.Platform.CachedImageRenderer.InitImageSourceHandler();
             LoadApplication(new App(new iOSInitializer()));
 
             return base.FinishedLaunching(app, options);

@@ -21,6 +21,8 @@
     <PackageReference Include="Polly" Version="7.2.2" />
     <PackageReference Include="Stripe.net" Version="39.45.0" />
     <PackageReference Include="Sharpnado.MaterialFrame" Version="1.1.4" />
+    <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.11.982" />
+    <PackageReference Include="Xamarin.FFImageLoading" Version="2.4.11.982" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\" />

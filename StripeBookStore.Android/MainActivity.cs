@@ -17,6 +17,9 @@ namespace StripeBookStore.Droid
             base.OnCreate(savedInstanceState);
 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
+            FFImageLoading.Forms.Platform.CachedImageRenderer.Init(true);
+            FFImageLoading.Forms.Platform.CachedImageRenderer.InitImageViewHandler();
+
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App(new AndroidInitializer()));
         }

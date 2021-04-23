@@ -3,9 +3,10 @@
     x:Class="StripeBookStore.Pages.BooksCatalogPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
     xmlns:rv="clr-namespace:Sharpnado.MaterialFrame;assembly=Sharpnado.MaterialFrame"
-    Padding="0,16,0,0"
+    Title="{Binding PageTitle}"
     ios:Page.UseSafeArea="false"
     BackgroundColor="WhiteSmoke">
     <ContentPage.Content>
@@ -25,24 +26,26 @@
                             MaterialTheme="Light"
                             Visual="Material">
                             <Grid ColumnDefinitions="92, 16, *, *" RowDefinitions="16, 14, 48, 32">
-                                <Label
+                                <ffimageloading:CachedImage
                                     Grid.Row="0"
                                     Grid.RowSpan="4"
                                     Grid.Column="0"
-                                    BackgroundColor="Orange"
-                                    Text="{Binding Name}" />
+                                    Aspect="AspectFill"
+                                    DownsampleToViewSize="true"
+                                    HeightRequest="300"
+                                    HorizontalOptions="Center"
+                                    Source="{Binding ImageUri}"
+                                    VerticalOptions="Center" />
                                 <Label
                                     Grid.Row="0"
                                     Grid.Column="2"
                                     Grid.ColumnSpan="2"
-                                    BackgroundColor="Red"
                                     FontSize="16"
                                     Text="{Binding Name}" />
                                 <Label
                                     Grid.Row="1"
                                     Grid.Column="2"
-                                    Grid.ColumnSpan="1"
-                                    BackgroundColor="Orange"
+                                    Grid.ColumnSpan="2"
                                     FontSize="Small"
                                     Text="{Binding Genre}" />
                                 <Label
