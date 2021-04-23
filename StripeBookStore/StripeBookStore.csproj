@@ -28,6 +28,7 @@
     <Folder Include="Pages\" />
     <Folder Include="ViewModels\Base\" />
     <Folder Include="Helpers\" />
+    <Folder Include="Helpers\Converters\" />
   </ItemGroup>
   <Import Project="..\StripeBookStore.Shared\StripeBookStore.Shared.projitems" Label="Shared" Condition="Exists('..\StripeBookStore.Shared\StripeBookStore.Shared.projitems')" />
 </Project>
