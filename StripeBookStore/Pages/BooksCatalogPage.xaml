@@ -6,11 +6,12 @@
     xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
     xmlns:rv="clr-namespace:Sharpnado.MaterialFrame;assembly=Sharpnado.MaterialFrame"
+    x:Name="mainLayout"
     Title="{Binding PageTitle}"
     ios:Page.UseSafeArea="false"
-    BackgroundColor="WhiteSmoke">
+    BackgroundColor="#F1F1F1">
     <ContentPage.Content>
-        <CollectionView ItemsSource="{Binding BooksCatalog}">
+        <CollectionView x:Name="booksCollectionsView" ItemsSource="{Binding BooksCatalog}">
             <CollectionView.ItemsLayout>
                 <LinearItemsLayout Orientation="Vertical" />
             </CollectionView.ItemsLayout>
@@ -20,22 +21,25 @@
                         <rv:MaterialFrame
                             Grid.Row="1"
                             Grid.Column="1"
+                            Margin="0,0,0,4"
                             BackgroundColor="WhiteSmoke"
+                            CornerRadius="4"
                             Elevation="4"
-                            HasShadow="False"
+                            HasShadow="True"
                             MaterialTheme="Light"
                             Visual="Material">
-                            <Grid ColumnDefinitions="92, 16, *, *" RowDefinitions="16, 14, 48, 32">
+                            <Grid
+                                ColumnDefinitions="92, 16, *, *"
+                                ColumnSpacing="0"
+                                RowDefinitions="22, 18, 48, 32"
+                                RowSpacing="4">
                                 <ffimageloading:CachedImage
                                     Grid.Row="0"
                                     Grid.RowSpan="4"
                                     Grid.Column="0"
-                                    Aspect="AspectFill"
+                                    Aspect="Fill"
                                     DownsampleToViewSize="true"
-                                    HeightRequest="300"
-                                    HorizontalOptions="Center"
-                                    Source="{Binding ImageUri}"
-                                    VerticalOptions="Center" />
+                                    Source="{Binding ImageUri}" />
                                 <Label
                                     Grid.Row="0"
                                     Grid.Column="2"
@@ -46,7 +50,7 @@
                                     Grid.Row="1"
                                     Grid.Column="2"
                                     Grid.ColumnSpan="2"
-                                    FontSize="Small"
+                                    FontSize="12"
                                     Text="{Binding Genre}" />
                                 <Label
                                     Grid.Row="2"
@@ -59,13 +63,21 @@
                                 <Label
                                     Grid.Row="3"
                                     Grid.Column="2"
-                                    Text="{Binding Price, Converter={StaticResource LongToCurrencyConverter}}" />
+                                    Text="{Binding Price, Converter={StaticResource LongToCurrencyConverter}}"
+                                    VerticalTextAlignment="Center" />
                                 <Button
                                     Grid.Row="3"
                                     Grid.Column="3"
+                                    Padding="0"
                                     BackgroundColor="Teal"
+                                    Command="{Binding Path=BindingContext.OnBuyItemCommand, Source={x:Reference mainLayout}}"
+                                    CommandParameter="{Binding .}"
+                                    FontSize="12"
+                                    HorizontalOptions="FillAndExpand"
                                     Text="BUY"
-                                    TextColor="White" />
+                                    TextColor="White"
+                                    VerticalOptions="Center"
+                                    Visual="Material" />
                             </Grid>
                         </rv:MaterialFrame>
                     </Grid>

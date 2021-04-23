@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using AsyncAwaitBestPractices;
 using Newtonsoft.Json;
+using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
 using Stripe;
@@ -21,7 +22,8 @@ namespace StripeBookStore.ViewModels
 
         private readonly IPreferences _preferences;
         private readonly IStripeBookStoreApi _stripeBookStoreApi;
-        
+
+
         public BooksCatalogPageViewModel(INavigationService navigationService, IPreferences preferences, IStripeBookStoreApi stripeBookStoreApi) : base(navigationService)
         {
             _preferences = preferences;
@@ -30,8 +32,15 @@ namespace StripeBookStore.ViewModels
             BooksCatalog = StripeBookStoreConstants.BooksCollection;
             CustomerName = IsFirstTime ? "Authenticating..." : "Luis Pujols | @Pujolsluis";
 
+            OnBuyItemCommand = new DelegateCommand<Book>(async (book) =>
+            {
+                await NavigationService.NavigateAsync(NavigationConstants.CheckoutPage, new NavigationParameters() { { NavigationDataConstants.Book, book } });
+            });
+
             LoadName().SafeFireAndForget();
         }
+
+        public DelegateCommand<Book> OnBuyItemCommand { get; set; }
 
         bool _isBusy;
         public bool IsBusy
