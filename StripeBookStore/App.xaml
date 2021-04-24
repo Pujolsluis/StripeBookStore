@@ -4,13 +4,92 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:Prism="clr-namespace:Prism.DryIoc;assembly=Prism.DryIoc.Forms"
-    xmlns:converters="clr-namespace:StripeBookStore.Helpers.Converters">
+    xmlns:converters="clr-namespace:StripeBookStore.Helpers.Converters"
+    xmlns:rv="clr-namespace:Sharpnado.MaterialFrame;assembly=Sharpnado.MaterialFrame">
     <Prism:PrismApplication.Resources>
         <!--  App colors  -->
-        <Color x:Key="Primary">#01A07F</Color>
-        <Color x:Key="PrimaryDark">#007F69</Color>
-        <Color x:Key="Secondary">#ffc107</Color>
-        <Color x:Key="Accent">#E2D479</Color>
+        <Color x:Key="Primary">#FFFFFF</Color>
+        <Color x:Key="PrimaryDark">#121212</Color>
+        <Color x:Key="Secondary">#F97B4F</Color>
+        <Color x:Key="Accent">#0A2440</Color>
+        <Color x:Key="LightBackground">#F1F1F1</Color>
+        <Color x:Key="PrimaryTextColor">#584053</Color>
+        <Color x:Key="TextColor">#121212</Color>
+        <Color x:Key="TextReceiptBodyColor">#707070</Color>
+
+        <!--  Styles  -->
+        <Style CanCascade="True" TargetType="NavigationPage">
+            <Setter Property="BarBackgroundColor" Value="{DynamicResource Primary}" />
+            <Setter Property="BarTextColor" Value="{DynamicResource TextColor}" />
+            <Setter Property="NavigationPage.BackButtonTitle" Value=" " />
+        </Style>
+
+        <!--  Button Styles  -->
+        <Style TargetType="Button">
+            <Setter Property="BackgroundColor" Value="{DynamicResource Accent}" />
+            <Setter Property="TextColor" Value="{DynamicResource Primary}" />
+            <Setter Property="Visual" Value="Material" />
+        </Style>
+
+        <Style x:Key="CardActionButtonStyle" TargetType="Button">
+            <Setter Property="BackgroundColor" Value="{DynamicResource Accent}" />
+            <Setter Property="TextColor" Value="{DynamicResource Primary}" />
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="Padding" Value="0" />
+        </Style>
+
+        <!--  Label Styles  -->
+        <Style TargetType="Label">
+            <Setter Property="FontFamily" Value="Roboto-Regular" />
+        </Style>
+
+        <Style x:Key="LabelCardTitlePrimaryStyle" TargetType="Label">
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="FontFamily" Value="Roboto-Bold" />
+            <Setter Property="TextColor" Value="{DynamicResource PrimaryTextColor}" />
+        </Style>
+        <Style x:Key="LabelCardTitleStyle" TargetType="Label">
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="LineBreakMode" Value="TailTruncation" />
+            <Setter Property="FontFamily" Value="Roboto-Bold" />
+            <Setter Property="TextColor" Value="{DynamicResource TextColor}" />
+        </Style>
+        <Style x:Key="LabelCardGenreStyle" TargetType="Label">
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="FontFamily" Value="Roboto-Light" />
+            <Setter Property="TextColor" Value="{DynamicResource Secondary}" />
+        </Style>
+        <Style x:Key="LabelCardBodyStyle" TargetType="Label">
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="LineBreakMode" Value="TailTruncation" />
+            <Setter Property="MaxLines" Value="2" />
+            <Setter Property="TextColor" Value="{DynamicResource TextColor}" />
+        </Style>
+        <Style x:Key="LabelBodyStyle" TargetType="Label">
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="TextColor" Value="{DynamicResource TextColor}" />
+        </Style>
+        <Style x:Key="LabelCardPriceStyle" TargetType="Label">
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="FontFamily" Value="Roboto-Medium" />
+            <Setter Property="TextColor" Value="{DynamicResource TextColor}" />
+        </Style>
+
+        <Style x:Key="LabelReceiptBodyStyle" TargetType="Label">
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="TextColor" Value="{DynamicResource TextReceiptBodyColor}" />
+        </Style>
+
+
+        <!--  Card Styles  -->
+        <Style x:Key="CardListItemStyle" TargetType="rv:MaterialFrame">
+            <Setter Property="Margin" Value="0,0,0,4" />
+            <Setter Property="Elevation" Value="4" />
+            <Setter Property="CornerRadius" Value="4" />
+            <Setter Property="HasShadow" Value="True" />
+            <Setter Property="MaterialTheme" Value="Light" />
+        </Style>
+
 
 
         <!--  Converters  -->

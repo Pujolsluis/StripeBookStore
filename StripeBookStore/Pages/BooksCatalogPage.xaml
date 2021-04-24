@@ -9,7 +9,7 @@
     x:Name="mainLayout"
     Title="{Binding PageTitle}"
     ios:Page.UseSafeArea="false"
-    BackgroundColor="#F1F1F1">
+    BackgroundColor="{StaticResource LightBackground}">
     <ContentPage.Content>
         <CollectionView x:Name="booksCollectionsView" ItemsSource="{Binding BooksCatalog}">
             <CollectionView.ItemsLayout>
@@ -21,13 +21,8 @@
                         <rv:MaterialFrame
                             Grid.Row="1"
                             Grid.Column="1"
-                            Margin="0,0,0,4"
-                            BackgroundColor="WhiteSmoke"
-                            CornerRadius="4"
-                            Elevation="4"
-                            HasShadow="True"
-                            MaterialTheme="Light"
-                            Visual="Material">
+                            BackgroundColor="{DynamicResource Accent}"
+                            Style="{StaticResource CardListItemStyle}">
                             <Grid
                                 ColumnDefinitions="92, 16, *, *"
                                 ColumnSpacing="0"
@@ -44,40 +39,33 @@
                                     Grid.Row="0"
                                     Grid.Column="2"
                                     Grid.ColumnSpan="2"
-                                    FontSize="16"
+                                    Style="{StaticResource LabelCardTitleStyle}"
                                     Text="{Binding Name}" />
                                 <Label
                                     Grid.Row="1"
                                     Grid.Column="2"
                                     Grid.ColumnSpan="2"
-                                    FontSize="12"
+                                    Style="{StaticResource LabelCardGenreStyle}"
                                     Text="{Binding Genre}" />
                                 <Label
                                     Grid.Row="2"
                                     Grid.Column="2"
                                     Grid.ColumnSpan="2"
-                                    FontSize="Caption"
-                                    LineBreakMode="TailTruncation"
-                                    MaxLines="2"
+                                    Style="{StaticResource LabelCardBodyStyle}"
                                     Text="{Binding Description}" />
                                 <Label
                                     Grid.Row="3"
                                     Grid.Column="2"
+                                    Style="{StaticResource LabelCardPriceStyle}"
                                     Text="{Binding Price, Converter={StaticResource LongToCurrencyConverter}}"
                                     VerticalTextAlignment="Center" />
                                 <Button
                                     Grid.Row="3"
                                     Grid.Column="3"
-                                    Padding="0"
-                                    BackgroundColor="Teal"
                                     Command="{Binding Path=BindingContext.OnBuyItemCommand, Source={x:Reference mainLayout}}"
                                     CommandParameter="{Binding .}"
-                                    FontSize="12"
-                                    HorizontalOptions="FillAndExpand"
-                                    Text="BUY"
-                                    TextColor="White"
-                                    VerticalOptions="Center"
-                                    Visual="Material" />
+                                    Style="{StaticResource CardActionButtonStyle}"
+                                    Text="BUY" />
                             </Grid>
                         </rv:MaterialFrame>
                     </Grid>
