@@ -9,6 +9,7 @@ namespace StripeBookStore.Pages
     {
         public BooksCatalogPage()
         {
+            NavigationPage.SetBackButtonTitle(this, "");
             InitializeComponent();
             //Work around for https://github.com/xamarin/Xamarin.Forms/issues/9879
             booksCollectionsView.Header = Device.RuntimePlatform is Device.Android ? new BoxView { HeightRequest = 4 } : null;

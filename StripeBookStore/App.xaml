@@ -15,6 +15,7 @@
         <Color x:Key="LightBackground">#F1F1F1</Color>
         <Color x:Key="PrimaryTextColor">#584053</Color>
         <Color x:Key="TextColor">#121212</Color>
+        <Color x:Key="LightSeparatorColor">#E4E4E4</Color>
         <Color x:Key="TextReceiptBodyColor">#707070</Color>
 
         <!--  Styles  -->
@@ -77,6 +78,7 @@
 
         <Style x:Key="LabelReceiptBodyStyle" TargetType="Label">
             <Setter Property="FontSize" Value="12" />
+            <Setter Property="FontFamily" Value="Roboto-Medium" />
             <Setter Property="TextColor" Value="{DynamicResource TextReceiptBodyColor}" />
         </Style>
 

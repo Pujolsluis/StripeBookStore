@@ -10,7 +10,7 @@ namespace StripeBookStore.Helpers.Converters
         {
             long amount = (long)value;
 
-            return $"${(decimal)amount / 100}";
+            return $"${(decimal)amount / 100 : 0.00}";
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
