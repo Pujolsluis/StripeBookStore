@@ -18,6 +18,13 @@
         <Color x:Key="LightSeparatorColor">#E4E4E4</Color>
         <Color x:Key="TextReceiptBodyColor">#707070</Color>
 
+        <!--  Add Credit Card Payment Page Colors  -->
+        <Color x:Key="CreditCardPrimary">#E5E9EE</Color>
+        <Color x:Key="CreditCardPrimaryDark">#75849D</Color>
+        <Color x:Key="CreditCardSecondary">#B5BBC2</Color>
+        <Color x:Key="CreditCardAccent">LightGray</Color>
+        <Color x:Key="CreditCardLightColor">LightGray</Color>
+
         <!--  Styles  -->
         <Style CanCascade="True" TargetType="NavigationPage">
             <Setter Property="BarBackgroundColor" Value="{DynamicResource Primary}" />
@@ -75,11 +82,24 @@
             <Setter Property="FontFamily" Value="Roboto-Medium" />
             <Setter Property="TextColor" Value="{DynamicResource TextColor}" />
         </Style>
-
         <Style x:Key="LabelReceiptBodyStyle" TargetType="Label">
             <Setter Property="FontSize" Value="12" />
             <Setter Property="FontFamily" Value="Roboto-Medium" />
             <Setter Property="TextColor" Value="{DynamicResource TextReceiptBodyColor}" />
+        </Style>
+
+
+        <!--  Entries Styles  -->
+        <Style x:Key="FrameEntryCreditCardStyle" TargetType="Frame">
+            <Setter Property="BorderColor" Value="{DynamicResource CreditCardLightColor}" />
+            <Setter Property="Padding" Value="10" />
+            <Setter Property="HasShadow" Value="false" />
+        </Style>
+
+        <Style x:Key="EntryCreditCardStyle" TargetType="Entry">
+            <Setter Property="Keyboard" Value="Numeric" />
+            <Setter Property="Visual" Value="Custom" />
+            <Setter Property="HorizontalOptions" Value="FillAndExpand" />
         </Style>
 
 
@@ -92,9 +112,37 @@
             <Setter Property="MaterialTheme" Value="Light" />
         </Style>
 
-
-
         <!--  Converters  -->
         <converters:LongToCurrencyConverter x:Key="LongToCurrencyConverter" />
+
+        <converters:CardNumberToImageConverter
+            x:Key="CardConverter"
+            Amex="ic_amex"
+            Dinners="ic_dinersclub"
+            Discover="ic_discover"
+            JCB="ic_jcb"
+            MasterCard="ic_mastercard"
+            NotRecognized="nocards"
+            Visa="ic_visa" />
+
+        <converters:CardNumberToImageConverter
+            x:Key="CardLightConverter"
+            Amex="americanexpresslogo"
+            Dinners="ic_dinersclub_white"
+            Discover="ic_discover_light"
+            JCB="ic_jcb"
+            MasterCard="ic_mastercard_white"
+            NotRecognized="ic_chip"
+            Visa="ic_visa_white" />
+
+        <converters:CardNumberToColorConverter
+            x:Key="CardColorConverter"
+            Amex="#3177CB"
+            Dinners="#1B4F8F"
+            Discover="#E9752F"
+            JCB="#9E2921"
+            MasterCard="#394854"
+            NotRecognized="#75849D"
+            Visa="#2867BA" />
     </Prism:PrismApplication.Resources>
 </Prism:PrismApplication>

@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="StripeBookStore.Pages.AddCardPaymentMethodPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:fastEntry="clr-namespace:XamarinFastEntrySample.FastEntry;assembly=XamarinFastEntry.Behaviors"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:local="clr-namespace:StripeBookStore.Views"
+    xmlns:rv="clr-namespace:Sharpnado.MaterialFrame;assembly=Sharpnado.MaterialFrame"
+    x:Name="mainLayout"
+    Title="{Binding PageTitle}"
+    ios:Page.UseSafeArea="false">
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid
+                ColumnDefinitions="Auto, 5*, 5*"
+                ColumnSpacing="20"
+                HorizontalOptions="FillAndExpand"
+                RowDefinitions="Auto, Auto, Auto, 1, Auto, 200, 4, 48"
+                VerticalOptions="FillAndExpand">
+
+                <local:CreditCardDisplayView
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="3" />
+
+                <Frame
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="3"
+                    Margin="30,16,30,10"
+                    Style="{StaticResource FrameEntryCreditCardStyle}">
+                    <StackLayout Orientation="Horizontal" Spacing="20">
+                        <Image HeightRequest="30" Source="{Binding CardNumber, Converter={StaticResource CardConverter}}" />
+                        <Entry Style="{StaticResource EntryCreditCardStyle}" Text="{Binding CardNumber, Mode=TwoWay}">
+                            <Entry.Behaviors>
+                                <fastEntry:XamarinFastEntryBehaviour Mask="####-####-####-####" MaxLength="19" />
+                            </Entry.Behaviors>
+                        </Entry>
+                    </StackLayout>
+                </Frame>
+
+                <Frame
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    Margin="30,0,0,10"
+                    Style="{StaticResource FrameEntryCreditCardStyle}">
+                    <StackLayout Orientation="Horizontal">
+                        <Image HeightRequest="25" Source="ic_date" />
+                        <Entry Style="{StaticResource EntryCreditCardStyle}" Text="{Binding CardExpirationDate}">
+                            <Entry.Behaviors>
+                                <fastEntry:XamarinFastEntryBehaviour Mask="##/##" MaxLength="19" />
+                            </Entry.Behaviors>
+                        </Entry>
+                    </StackLayout>
+                </Frame>
+
+                <Frame
+                    Grid.Row="2"
+                    Grid.Column="2"
+                    Margin="0,0,30,10"
+                    Style="{StaticResource FrameEntryCreditCardStyle}">
+                    <StackLayout Orientation="Horizontal">
+                        <Image HeightRequest="25" Source="ic_cvv" />
+                        <Entry Style="{StaticResource EntryCreditCardStyle}" Text="{Binding CardCvv}">
+                            <Entry.Behaviors>
+                                <fastEntry:XamarinFastEntryBehaviour Mask="###" MaxLength="3" />
+                            </Entry.Behaviors>
+                        </Entry>
+                    </StackLayout>
+                </Frame>
+
+                <Line
+                    Grid.Row="3"
+                    Grid.ColumnSpan="3"
+                    BackgroundColor="{DynamicResource LightSeparatorColor}" />
+
+                <Label
+                    Grid.Row="4"
+                    Grid.ColumnSpan="3"
+                    Margin="32,8,32,4"
+                    FontSize="14"
+                    Text="Test Cards Details:" />
+
+                <Label
+                    Grid.Row="5"
+                    Grid.ColumnSpan="3"
+                    Margin="32,0"
+                    FontSize="12">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="All Cards accept any CVC, postal code and future expiration date.&#10;&#10;" />
+                            <Span LineHeight="1.25" Text="4242 - 4242 - 4242 - 4242&#10;Succeeds and immediately processes the payment.&#10;&#10;" />
+                            <Span LineHeight="1.25" Text="4000 - 0025 - 0000 - 3155&#10;- Requires 3D Authorization, not supported by app.&#10;&#10;" />
+                            <Span LineHeight="1.25" Text="4000 - 0000 - 0000 - 9995&#10;- Always fails with a decline code of insufficient_funds.&#10;" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+                <Button
+                    Grid.Row="7"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="3"
+                    Margin="32,0"
+                    BackgroundColor="{Binding CardNumber, Converter={StaticResource CardColorConverter}}"
+                    FontSize="16"
+                    HorizontalOptions="FillAndExpand"
+                    Text="Add Credit Card"
+                    TextColor="White" />
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

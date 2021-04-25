@@ -33,6 +33,7 @@ namespace StripeBookStore
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<BooksCatalogPage, BooksCatalogPageViewModel>();
             containerRegistry.RegisterForNavigation<CheckoutPage, CheckoutPageViewModel>();
+            containerRegistry.RegisterForNavigation<AddCardPaymentMethodPage, AddCardPaymentMethodViewModel>();
 
             IStripeBookStoreApi stripeBookStoreApiClient = RefitExtensions.For<IStripeBookStoreApi>(BaseApiService.CreateHttpClient(StripeBookStoreConstants.StripeBookStoreBaseUrl));
 

@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<StackLayout
+    x:Class="StripeBookStore.Views.CreditCardDisplayView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:rv="clr-namespace:Sharpnado.MaterialFrame;assembly=Sharpnado.MaterialFrame"
+    BackgroundColor="LightGray">
+    <rv:MaterialFrame
+        Margin="42,24,42,24"
+        Padding="16,16"
+        Elevation="4"
+        LightThemeBackgroundColor="{Binding CardNumber, Converter={StaticResource CardColorConverter}}">
+        <Grid
+            ColumnDefinitions="Auto, *"
+            ColumnSpacing="30"
+            RowDefinitions="Auto, Auto, 32, Auto, 32"
+            RowSpacing="0">
+            <Image
+                Grid.Row="0"
+                Grid.Column="1"
+                HeightRequest="32"
+                HorizontalOptions="EndAndExpand"
+                Source="{Binding CardNumber, Converter={StaticResource CardLightConverter}}" />
+
+            <Label
+                Grid.Row="1"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                FontSize="12"
+                LineBreakMode="TailTruncation"
+                Text="Card Number"
+                TextColor="{StaticResource CreditCardAccent}" />
+
+            <Label
+                Grid.Row="2"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                FontSize="20"
+                Text="{Binding CardNumber}"
+                TextColor="{StaticResource CreditCardSecondary}" />
+
+            <Label
+                Grid.Row="3"
+                Grid.Column="0"
+                Margin="0,20,0,0"
+                FontSize="12"
+                Text="Expiration"
+                TextColor="{StaticResource CreditCardAccent}" />
+
+            <Label
+                Grid.Row="4"
+                Grid.Column="0"
+                FontSize="20"
+                Text="{Binding CardExpirationDate}"
+                TextColor="{StaticResource CreditCardSecondary}" />
+
+            <Label
+                Grid.Row="3"
+                Grid.Column="1"
+                Margin="0,20,0,0"
+                FontSize="12"
+                Text="Cvv"
+                TextColor="{StaticResource CreditCardAccent}" />
+
+            <Label
+                Grid.Row="4"
+                Grid.Column="1"
+                FontSize="20"
+                Text="{Binding CardCvv}"
+                TextColor="{StaticResource CreditCardSecondary}" />
+        </Grid>
+    </rv:MaterialFrame>
+</StackLayout>

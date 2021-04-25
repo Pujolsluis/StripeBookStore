@@ -6,6 +6,7 @@ namespace StripeBookStore
 
         public const string BooksCatalog = "NavigationPage/BooksCatalogPage";
         public const string CheckoutPage = "CheckoutPage";
+        public const string AddPaymentMethod = "AddCardPaymentMethodPage";
     }
 
     public static class NavigationDataConstants

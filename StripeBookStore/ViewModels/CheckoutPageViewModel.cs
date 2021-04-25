@@ -15,9 +15,11 @@ namespace StripeBookStore.ViewModels
         {
             PageTitle = "Checkout";
 
-            OnSelectPaymentMethodCommand = new DelegateCommand(() =>
+            OnSelectPaymentMethodCommand = new DelegateCommand(async () =>
             {
-                PaymentMethod = string.IsNullOrEmpty(_paymentMethod) ? "Visa" : string.Empty;
+                //PaymentMethod = string.IsNullOrEmpty(_paymentMethod) ? "Visa" : string.Empty;
+
+                await NavigationService.NavigateAsync(NavigationConstants.AddPaymentMethod);
             });
 
             OnConfirmPaymentCommand = new DelegateCommand(() =>

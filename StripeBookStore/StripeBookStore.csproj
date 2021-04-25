@@ -23,6 +23,7 @@
     <PackageReference Include="Sharpnado.MaterialFrame" Version="1.1.4" />
     <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.11.982" />
     <PackageReference Include="Xamarin.FFImageLoading" Version="2.4.11.982" />
+    <PackageReference Include="XamarinFastEntry.Behaviors" Version="1.1.1" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\" />
@@ -32,6 +33,7 @@
     <Folder Include="Helpers\" />
     <Folder Include="Helpers\Converters\" />
     <Folder Include="Resources\" />
+    <Folder Include="Controls\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Resources\Roboto-Bold.ttf" />
