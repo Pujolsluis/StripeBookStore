@@ -27,5 +27,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Interfaces\IStoreProduct.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\DTOs\PaymentRequest.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\DTOs\PublicKeyResponse.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Card.cs" />
   </ItemGroup>
 </Project>

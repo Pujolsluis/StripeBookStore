@@ -104,10 +104,9 @@
                     Grid.ColumnSpan="3"
                     Margin="32,0"
                     BackgroundColor="{Binding CardNumber, Converter={StaticResource CardColorConverter}}"
+                    Command="{Binding OnAddCardCommand}"
                     FontSize="16"
-                    HorizontalOptions="FillAndExpand"
-                    Text="Add Credit Card"
-                    TextColor="White" />
+                    Text="Add Card" />
             </Grid>
         </ScrollView>
     </ContentPage.Content>

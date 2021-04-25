@@ -6,10 +6,8 @@ using StripeBookStore.ViewModels.Base;
 
 namespace StripeBookStore.ViewModels
 {
-    public class CheckoutPageViewModel : BaseViewModel, IInitialize
+    public class CheckoutPageViewModel : BaseViewModel, IInitialize, INavigationAware
     {
-        
-
 
         public CheckoutPageViewModel(INavigationService navigationService) : base(navigationService)
         {
@@ -40,6 +38,22 @@ namespace StripeBookStore.ViewModels
 
         public DelegateCommand OnSelectPaymentMethodCommand { get; set; }
         public DelegateCommand OnConfirmPaymentCommand { get; set; }
+
+        public void OnNavigatedFrom(INavigationParameters parameters)
+        {
+
+        }
+
+        public void OnNavigatedTo(INavigationParameters parameters)
+        {
+            if(parameters.ContainsKey(NavigationDataConstants.Card))
+            {
+                _cardPaymentMethod = parameters.GetValue<Card>(NavigationDataConstants.Card);
+                PaymentMethod = $"ending on {_cardPaymentMethod.Number.Substring(_cardPaymentMethod.Number.Length - 4)}";
+            }
+        }
+
+        private Card _cardPaymentMethod;
 
         private string _pageTitle;
         public string PageTitle
@@ -82,6 +96,7 @@ namespace StripeBookStore.ViewModels
             OrderTotalAmount = OrderSubTotalAmount + OrderTaxAmount;
             OnPropertyChanged(nameof(PayAmount));
         }
+
 
         private string _payAmount;
         public string PayAmount

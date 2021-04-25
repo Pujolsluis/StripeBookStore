@@ -9,6 +9,7 @@ namespace StripeBookStore.Pages
     {
         public CheckoutPage()
         {
+            NavigationPage.SetBackButtonTitle(this, "");
             InitializeComponent();
         }
     }

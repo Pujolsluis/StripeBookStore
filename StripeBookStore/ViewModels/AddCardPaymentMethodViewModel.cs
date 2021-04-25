@@ -1,5 +1,7 @@
 ﻿using System;
+using Prism.Commands;
 using Prism.Navigation;
+using StripeBookStore.Shared.Models;
 using StripeBookStore.ViewModels.Base;
 
 namespace StripeBookStore.ViewModels
@@ -8,7 +10,21 @@ namespace StripeBookStore.ViewModels
     {
         public AddCardPaymentMethodViewModel(INavigationService navigationService) : base(navigationService)
         {
+
+            OnAddCardCommand = new DelegateCommand(async () =>
+            {
+                var card = new Card()
+                {
+                    Number = CardNumber,
+                    CVV = CardCvv,
+                    ExpirationDate = CardExpirationDate
+                };
+
+                await NavigationService.GoBackAsync(new NavigationParameters() { { NavigationDataConstants.Card, card } });
+            });
         }
+
+        public DelegateCommand OnAddCardCommand { get; set; }
 
         private string _pageTitle = "Add Payment Method";
         public string PageTitle

@@ -13,5 +13,6 @@ namespace StripeBookStore
     {
         public const string Book = "Book";
         public const string BookDetails = "BookDetails";
+        public const  string Card = "Card";
     }
 }
