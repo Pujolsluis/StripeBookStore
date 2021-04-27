@@ -10,7 +10,7 @@ namespace StripeBookStore.Shared.Interfaces
     public interface IStripeBookStoreApi
     {
         [Get("/tokens/public-keys")]
-        Task<HttpResponseMessage> GetStripePublicKeys(string startingAfter = "", int pageSize = 25);
+        Task<HttpResponseMessage> GetStripePublicKeys();
 
         [Get("/customers?startingAfter={startingAfter}&pageSize={pageSize}")]
         Task<HttpResponseMessage> GetCustomers(string startingAfter = "", int pageSize = 25);

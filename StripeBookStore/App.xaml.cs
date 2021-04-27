@@ -3,6 +3,7 @@ using Prism;
 using Prism.DryIoc;
 using Prism.Ioc;
 using StripeBookStore.Pages;
+using StripeBookStore.Services;
 using StripeBookStore.Shared;
 using StripeBookStore.Shared.Constants;
 using StripeBookStore.Shared.Interfaces;
@@ -39,6 +40,9 @@ namespace StripeBookStore
 
             //Services
             containerRegistry.RegisterSingleton<IPreferences, PreferencesImplementation>();
+            containerRegistry.RegisterSingleton<ISecureStorage, SecureStorageImplementation>();
+            containerRegistry.RegisterSingleton<IConnectivity, ConnectivityImplementation>();
+            containerRegistry.Register<IApiManager, ApiManager>();
             containerRegistry.RegisterInstance(stripeBookStoreApiClient);
         }
     }

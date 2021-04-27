@@ -97,7 +97,6 @@ namespace StripeBookStore.ViewModels
             OnPropertyChanged(nameof(PayAmount));
         }
 
-
         private string _payAmount;
         public string PayAmount
         {

@@ -25,6 +25,13 @@ namespace StripeBookStore.ViewModels.Base
             NavigationService = navigationService;
         }
 
+        bool _isBusy;
+        public bool IsBusy
+        {
+            get => _isBusy;
+            set => SetProperty(ref _isBusy, value);
+        }
+
         protected void SetProperty<T>(ref T backingStore, in T value, in System.Action onChanged = null, [CallerMemberName] in string propertyname = "")
         {
             if (EqualityComparer<T>.Default.Equals(backingStore, value))

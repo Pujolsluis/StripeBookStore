@@ -2,7 +2,7 @@
 {
     public class PaymentRequest
     {
-        public PaymentRequest(string sku, string customer)
+        public PaymentRequest(string sku, string customer = null)
         {
             Sku = sku;
             Customer = customer;

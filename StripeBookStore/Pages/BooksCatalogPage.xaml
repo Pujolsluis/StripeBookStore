@@ -11,66 +11,90 @@
     ios:Page.UseSafeArea="false"
     BackgroundColor="{StaticResource LightBackground}">
     <ContentPage.Content>
-        <CollectionView x:Name="booksCollectionsView" ItemsSource="{Binding BooksCatalog}">
-            <CollectionView.ItemsLayout>
-                <LinearItemsLayout Orientation="Vertical" />
-            </CollectionView.ItemsLayout>
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <Grid ColumnDefinitions="16, *, 16" RowDefinitions="16, *">
-                        <rv:MaterialFrame
-                            Grid.Row="1"
-                            Grid.Column="1"
-                            BackgroundColor="{DynamicResource Accent}"
-                            Style="{StaticResource CardListItemStyle}">
-                            <Grid
-                                ColumnDefinitions="92, 16, *, *"
-                                ColumnSpacing="0"
-                                RowDefinitions="22, 18, 48, 32"
-                                RowSpacing="4">
-                                <ffimageloading:CachedImage
-                                    Grid.Row="0"
-                                    Grid.RowSpan="4"
-                                    Grid.Column="0"
-                                    Aspect="Fill"
-                                    DownsampleToViewSize="true"
-                                    Source="{Binding ImageUri}" />
-                                <Label
-                                    Grid.Row="0"
-                                    Grid.Column="2"
-                                    Grid.ColumnSpan="2"
-                                    Style="{StaticResource LabelCardTitleStyle}"
-                                    Text="{Binding Name}" />
-                                <Label
-                                    Grid.Row="1"
-                                    Grid.Column="2"
-                                    Grid.ColumnSpan="2"
-                                    Style="{StaticResource LabelCardGenreStyle}"
-                                    Text="{Binding Genre}" />
-                                <Label
-                                    Grid.Row="2"
-                                    Grid.Column="2"
-                                    Grid.ColumnSpan="2"
-                                    Style="{StaticResource LabelCardBodyStyle}"
-                                    Text="{Binding Description}" />
-                                <Label
-                                    Grid.Row="3"
-                                    Grid.Column="2"
-                                    Style="{StaticResource LabelCardPriceStyle}"
-                                    Text="{Binding Price, Converter={StaticResource LongToCurrencyConverter}}"
-                                    VerticalTextAlignment="Center" />
-                                <Button
-                                    Grid.Row="3"
-                                    Grid.Column="3"
-                                    Command="{Binding Path=BindingContext.OnBuyItemCommand, Source={x:Reference mainLayout}}"
-                                    CommandParameter="{Binding .}"
-                                    Style="{StaticResource CardActionButtonStyle}"
-                                    Text="BUY" />
-                            </Grid>
-                        </rv:MaterialFrame>
-                    </Grid>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
+        <StackLayout>
+            <ActivityIndicator
+                Margin="0,16,0,0"
+                IsRunning="{Binding IsBusy}"
+                IsVisible="{Binding IsBusy}"
+                Color="{DynamicResource Accent}" />
+            <Label
+                Padding="20"
+                BackgroundColor="OrangeRed"
+                FontSize="14"
+                HorizontalOptions="FillAndExpand"
+                IsVisible="{Binding ErrorInitializing}"
+                Text="Oops! there was an error connecting to your Stripe Bookstore server." />
+            <Button
+                Margin="62,0"
+                Command="{Binding OnRetryInitializationCommand}"
+                HorizontalOptions="FillAndExpand"
+                IsVisible="{Binding ErrorInitializing}"
+                Text="Retry"
+                VerticalOptions="CenterAndExpand" />
+            <CollectionView
+                x:Name="booksCollectionsView"
+                IsVisible="{Binding IsCollectionViewReady}"
+                ItemsSource="{Binding BooksCatalog}">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid ColumnDefinitions="16, *, 16" RowDefinitions="16, *">
+                            <rv:MaterialFrame
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                BackgroundColor="{DynamicResource Accent}"
+                                Style="{StaticResource CardListItemStyle}">
+                                <Grid
+                                    ColumnDefinitions="92, 16, *, *"
+                                    ColumnSpacing="0"
+                                    RowDefinitions="22, 18, 48, 32"
+                                    RowSpacing="4">
+                                    <ffimageloading:CachedImage
+                                        Grid.Row="0"
+                                        Grid.RowSpan="4"
+                                        Grid.Column="0"
+                                        Aspect="Fill"
+                                        DownsampleToViewSize="true"
+                                        Source="{Binding ImageUri}" />
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="2"
+                                        Grid.ColumnSpan="2"
+                                        Style="{StaticResource LabelCardTitleStyle}"
+                                        Text="{Binding Name}" />
+                                    <Label
+                                        Grid.Row="1"
+                                        Grid.Column="2"
+                                        Grid.ColumnSpan="2"
+                                        Style="{StaticResource LabelCardGenreStyle}"
+                                        Text="{Binding Genre}" />
+                                    <Label
+                                        Grid.Row="2"
+                                        Grid.Column="2"
+                                        Grid.ColumnSpan="2"
+                                        Style="{StaticResource LabelCardBodyStyle}"
+                                        Text="{Binding Description}" />
+                                    <Label
+                                        Grid.Row="3"
+                                        Grid.Column="2"
+                                        Style="{StaticResource LabelCardPriceStyle}"
+                                        Text="{Binding Price, Converter={StaticResource LongToCurrencyConverter}}"
+                                        VerticalTextAlignment="Center" />
+                                    <Button
+                                        Grid.Row="3"
+                                        Grid.Column="3"
+                                        Command="{Binding Path=BindingContext.OnBuyItemCommand, Source={x:Reference mainLayout}}"
+                                        CommandParameter="{Binding .}"
+                                        Style="{StaticResource CardActionButtonStyle}"
+                                        Text="BUY" />
+                                </Grid>
+                            </rv:MaterialFrame>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

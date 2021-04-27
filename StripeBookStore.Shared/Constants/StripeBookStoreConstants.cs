@@ -8,9 +8,15 @@ namespace StripeBookStore.Shared.Constants
 {
     public static class StripeBookStoreConstants
     {
-        public const string StripeBookStoreBaseUrl = "http://localhost:42424/api";
+        //public const string StripeBookStoreBaseUrl = "http://localhost:42424/api";
         //Android localhost
-        //public const string StripeBookStoreBaseUrl = "http://10.0.2.2:42424/api";
+        public const string StripeBookStoreBaseUrl = "http://10.0.2.2:42424/api";
+
+        #region Settings and Secure Storage Constants
+        public const string SettingPublishableKey = "publishable_key";
+        public const string SettingIsFirstTime = "is_first_time";
+        #endregion
+
 
         public static readonly ObservableCollection<Book> BooksCollection = new ObservableCollection<Book>()
         {
