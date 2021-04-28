@@ -6,9 +6,9 @@ namespace StripeBookStore.Shared.Constants
     public static class StripeBookStoreConstants
     {
         //iOS Emulator localhost
-        //public const string StripeBookStoreBaseUrl = "http://localhost:42424/api";
+        public const string StripeBookStoreBaseUrl = "http://localhost:42424/api";
         //Android Emulator localhost
-        public const string StripeBookStoreBaseUrl = "http://10.0.2.2:42424/api";
+        //public const string StripeBookStoreBaseUrl = "http://10.0.2.2:42424/api";
 
 
         #region Settings and Secure Storage Constants
