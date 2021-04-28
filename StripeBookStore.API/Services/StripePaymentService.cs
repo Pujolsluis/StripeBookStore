@@ -24,15 +24,15 @@ namespace StripeBookStore.API.Services
 
         public async Task<CreatePaymentIntentResponse> CreatePaymentIntentAsync(CreatePaymentIntentRequest request)
         {
-            StripeList<Price> prices = await GetPricesAsync();
-            var productPrice = prices.Where(price => price.ProductId.Equals(request.Sku)).FirstOrDefault();
+            //Get product price from in Memory Collection
+            var productPriceAmount = GetProductPriceFromMemory(request);
 
-            if (productPrice == null)
-                return null;
+            //Get product price from in Stripe Account
+            //var productPriceAmount = GetProductPriceFromStripe(request);
 
             //Apply 8.25 Sales Tax to product
-            long orderTaxAmount = (long)((decimal)productPrice.UnitAmount / 100 * (decimal)0.0825 * 100);
-            long orderTotal = (long)(productPrice.UnitAmount + orderTaxAmount);
+            long orderTaxAmount = (long)((decimal)productPriceAmount / 100 * (decimal)0.0825 * 100);
+            long orderTotal = (long)(productPriceAmount + orderTaxAmount);
 
             var options = new PaymentIntentCreateOptions
             {
@@ -47,6 +47,22 @@ namespace StripeBookStore.API.Services
             return new CreatePaymentIntentResponse{ Id = paymentIntent.Id,ClientSecret = paymentIntent.ClientSecret };
         }
 
+        long GetProductPriceFromMemory(CreatePaymentIntentRequest request)
+        {
+            return StripeBookStoreConstants.BooksCollection.Where(book => book.Sku.Equals(request.Sku)).FirstOrDefault().Price;
+        }
+
+        async Task<long> GetProductPriceFromStripe(CreatePaymentIntentRequest request)
+        {
+
+            StripeList<Price> prices = await GetPricesAsync();
+            var productPrice = prices.Where(price => price.ProductId.Equals(request.Sku)).FirstOrDefault();
+
+            if (productPrice == null)
+                return 0;
+
+            return (long)productPrice.UnitAmount;
+        }
         public async Task<StripeList<Customer>> GetCustomersAsync(string customerId = "", string startingAfter = "", int pageSize = 25)
         {
             var options = new CustomerListOptions
