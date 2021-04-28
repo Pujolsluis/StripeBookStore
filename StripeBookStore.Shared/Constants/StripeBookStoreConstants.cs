@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using StripeBookStore.Shared.Interfaces;
+﻿using System.Collections.ObjectModel;
 using StripeBookStore.Shared.Models;
 
 namespace StripeBookStore.Shared.Constants
@@ -22,7 +19,7 @@ namespace StripeBookStore.Shared.Constants
         {
             new Book()
             {
-                Sku = "book_3x12",
+                Sku = "prod_JCW2A3ChYHeMUv",
                 Name = "Harry Potter And The Sorcerer's Stone",
                 Price = 999,
                 Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque accumsan urna a nisi elementum, id vulputate tortor fringilla.",

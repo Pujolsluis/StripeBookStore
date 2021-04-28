@@ -59,14 +59,14 @@
                 Grid.Column="1"
                 Margin="0,20,0,0"
                 FontSize="12"
-                Text="Cvv"
+                Text="Cvc"
                 TextColor="{StaticResource CreditCardAccent}" />
 
             <Label
                 Grid.Row="4"
                 Grid.Column="1"
                 FontSize="20"
-                Text="{Binding CardCvv}"
+                Text="{Binding CardCVC}"
                 TextColor="{StaticResource CreditCardSecondary}" />
         </Grid>
     </rv:MaterialFrame>

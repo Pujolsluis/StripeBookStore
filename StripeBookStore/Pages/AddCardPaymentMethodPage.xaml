@@ -16,7 +16,7 @@
                 ColumnDefinitions="Auto, 5*, 5*"
                 ColumnSpacing="20"
                 HorizontalOptions="FillAndExpand"
-                RowDefinitions="Auto, Auto, Auto, 1, Auto, 200, 4, 48"
+                RowDefinitions="Auto, Auto, Auto, 1, Auto, 200, 4, 48, 16"
                 VerticalOptions="FillAndExpand">
 
                 <local:CreditCardDisplayView
@@ -32,7 +32,10 @@
                     Style="{StaticResource FrameEntryCreditCardStyle}">
                     <StackLayout Orientation="Horizontal" Spacing="20">
                         <Image HeightRequest="30" Source="{Binding CardNumber, Converter={StaticResource CardConverter}}" />
-                        <Entry Style="{StaticResource EntryCreditCardStyle}" Text="{Binding CardNumber, Mode=TwoWay}">
+                        <Entry
+                            Placeholder="0000-0000-0000-0000"
+                            Style="{StaticResource EntryCreditCardStyle}"
+                            Text="{Binding CardNumber, Mode=TwoWay}">
                             <Entry.Behaviors>
                                 <fastEntry:XamarinFastEntryBehaviour Mask="####-####-####-####" MaxLength="19" />
                             </Entry.Behaviors>
@@ -48,7 +51,10 @@
                     Style="{StaticResource FrameEntryCreditCardStyle}">
                     <StackLayout Orientation="Horizontal">
                         <Image HeightRequest="25" Source="ic_date" />
-                        <Entry Style="{StaticResource EntryCreditCardStyle}" Text="{Binding CardExpirationDate}">
+                        <Entry
+                            Placeholder="MM/YY"
+                            Style="{StaticResource EntryCreditCardStyle}"
+                            Text="{Binding CardExpirationDate}">
                             <Entry.Behaviors>
                                 <fastEntry:XamarinFastEntryBehaviour Mask="##/##" MaxLength="19" />
                             </Entry.Behaviors>
@@ -63,7 +69,10 @@
                     Style="{StaticResource FrameEntryCreditCardStyle}">
                     <StackLayout Orientation="Horizontal">
                         <Image HeightRequest="25" Source="ic_cvv" />
-                        <Entry Style="{StaticResource EntryCreditCardStyle}" Text="{Binding CardCvv}">
+                        <Entry
+                            Placeholder="123"
+                            Style="{StaticResource EntryCreditCardStyle}"
+                            Text="{Binding CardCVC}">
                             <Entry.Behaviors>
                                 <fastEntry:XamarinFastEntryBehaviour Mask="###" MaxLength="3" />
                             </Entry.Behaviors>

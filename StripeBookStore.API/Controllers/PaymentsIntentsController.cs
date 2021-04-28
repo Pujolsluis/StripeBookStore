@@ -59,7 +59,7 @@ namespace StripeBookStore.API.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<string>> CreatePaymentIntent([FromBody] PaymentRequest requestPaymentIntent)
+        public async Task<ActionResult<CreatePaymentIntentResponse>> CreatePaymentIntent([FromBody] CreatePaymentIntentRequest requestPaymentIntent)
         {
             _logger.LogDebug($"PostBookPaymentIntent for Book Id {requestPaymentIntent.Sku}");
 
@@ -69,12 +69,12 @@ namespace StripeBookStore.API.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var paymentIntentClientSecret = await _stripePaymentService.CreatePaymentIntentAsync(requestPaymentIntent);
+            var paymentIntent = await _stripePaymentService.CreatePaymentIntentAsync(requestPaymentIntent);
 
-            if (string.IsNullOrEmpty(paymentIntentClientSecret))
+            if (string.IsNullOrEmpty(paymentIntent.ClientSecret))
                 return NotFound("Product Price not Found.");
 
-            return paymentIntentClientSecret;
+            return paymentIntent;
         }
 
         /// <summary>
@@ -109,7 +109,7 @@ namespace StripeBookStore.API.Controllers
             if(stripeEvent.Type == "charge.succeeded")
             {
                 var charge = stripeEvent.Data.Object as Stripe.Charge;
-                _logger.LogDebug($"Payment completed with ID {charge.Id}");
+                _logger.LogDebug($"Payment completed of ${charge.Amount/100} with charge ID {charge.Id}");
             }
 
             return Ok();

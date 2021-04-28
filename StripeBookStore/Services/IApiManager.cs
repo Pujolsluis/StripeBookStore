@@ -16,6 +16,6 @@ namespace StripeBookStore.Services
 
         Task<HttpResponseMessage> GetPaymentIntents(CancellationTokenSource cts, string startingAfter = "", int pageSize = 25);
 
-        Task<HttpResponseMessage> PostPaymentIntent(PaymentRequest request, CancellationTokenSource cts);
+        Task<HttpResponseMessage> PostPaymentIntent(CreatePaymentIntentRequest request, CancellationTokenSource cts);
     }
 }

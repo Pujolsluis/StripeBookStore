@@ -21,7 +21,7 @@ namespace StripeBookStore.API.Services
             _options = options;
         }
 
-        public async Task<string> CreatePaymentIntentAsync(PaymentRequest request)
+        public async Task<CreatePaymentIntentResponse> CreatePaymentIntentAsync(CreatePaymentIntentRequest request)
         {
             StripeList<Price> prices = await GetPricesAsync();
             var productPrice = prices.Where(price => price.ProductId.Equals(request.Sku)).FirstOrDefault();
@@ -39,7 +39,7 @@ namespace StripeBookStore.API.Services
             var paymentService = new PaymentIntentService(_client);
             PaymentIntent paymentIntent = await paymentService.CreateAsync(options);
 
-            return paymentIntent.ClientSecret;
+            return new CreatePaymentIntentResponse{ Id = paymentIntent.Id,ClientSecret = paymentIntent.ClientSecret };
         }
 
         public async Task<StripeList<Customer>> GetCustomersAsync(string customerId = "", string startingAfter = "", int pageSize = 25)

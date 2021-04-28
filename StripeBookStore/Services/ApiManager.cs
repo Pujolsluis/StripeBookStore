@@ -56,7 +56,7 @@ namespace StripeBookStore.Services
             return await task;
         }
 
-        public async Task<HttpResponseMessage> PostPaymentIntent(PaymentRequest request, CancellationTokenSource cts)
+        public async Task<HttpResponseMessage> PostPaymentIntent(CreatePaymentIntentRequest request, CancellationTokenSource cts)
         {
             var task = AttemptAndRetry(() => _stripeBookStoreApi.PostPaymentIntent(request), cts.Token);
             runningTasks.Add(task.Id, cts);

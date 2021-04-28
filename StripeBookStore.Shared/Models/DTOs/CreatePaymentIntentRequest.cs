@@ -1,8 +1,8 @@
 ﻿namespace StripeBookStore.Shared.Models.DTOs
 {
-    public class PaymentRequest
+    public class CreatePaymentIntentRequest
     {
-        public PaymentRequest(string sku, string customer = null)
+        public CreatePaymentIntentRequest(string sku, string customer = null)
         {
             Sku = sku;
             Customer = customer;

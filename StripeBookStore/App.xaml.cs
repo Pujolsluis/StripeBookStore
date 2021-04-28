@@ -17,7 +17,7 @@ namespace StripeBookStore
 {
     public partial class App : PrismApplication
     {
-        public App(IPlatformInitializer initializer = null) : base(initializer) { }
+        public App(IPlatformInitializer initializer = null, IApiManager apiManager = null) : base(initializer) { }
 
         protected override void OnInitialized()
         {
@@ -42,6 +42,7 @@ namespace StripeBookStore
             containerRegistry.RegisterSingleton<IPreferences, PreferencesImplementation>();
             containerRegistry.RegisterSingleton<ISecureStorage, SecureStorageImplementation>();
             containerRegistry.RegisterSingleton<IConnectivity, ConnectivityImplementation>();
+            containerRegistry.RegisterSingleton<IMainThread, MainThreadImplementation>();
             containerRegistry.Register<IApiManager, ApiManager>();
             containerRegistry.RegisterInstance(stripeBookStoreApiClient);
         }

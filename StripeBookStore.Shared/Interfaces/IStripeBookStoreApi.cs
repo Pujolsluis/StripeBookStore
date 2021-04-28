@@ -22,6 +22,6 @@ namespace StripeBookStore.Shared.Interfaces
         Task<HttpResponseMessage> GetPaymentIntents(string startingAfter = "", int pageSize = 25);
 
         [Post("/paymentIntents")]
-        Task<HttpResponseMessage> PostPaymentIntent([Body] PaymentRequest request);
+        Task<HttpResponseMessage> PostPaymentIntent([Body] CreatePaymentIntentRequest request);
     }
 }

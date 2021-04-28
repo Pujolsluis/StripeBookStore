@@ -74,19 +74,17 @@ namespace StripeBookStore.ViewModels
             });
         }
 
-        private bool _errorInitializing;
-        public bool ErrorInitializing
-        {
-            get => _errorInitializing;
-            set => SetProperty(ref _errorInitializing, value);
-        }
-
         public bool IsCollectionViewReady
         {
             get => !IsBusy && !ErrorInitializing;
         }
 
-        private async Task<bool> InitializeStripePublishableKey()
+        public void Initialize(INavigationParameters parameters)
+        {
+            InitializeStripePublishableKey().SafeFireAndForget();
+        }
+
+        async Task<bool> InitializeStripePublishableKey()
         {
 
             MainThread.BeginInvokeOnMainThread(() =>
@@ -132,9 +130,5 @@ namespace StripeBookStore.ViewModels
         {
         }
 
-        public void Initialize(INavigationParameters parameters)
-        {
-            InitializeStripePublishableKey().SafeFireAndForget();
-        }
     }
 }

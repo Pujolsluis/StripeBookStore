@@ -32,6 +32,13 @@ namespace StripeBookStore.ViewModels.Base
             set => SetProperty(ref _isBusy, value);
         }
 
+        private bool _errorInitializing;
+        public bool ErrorInitializing
+        {
+            get => _errorInitializing;
+            set => SetProperty(ref _errorInitializing, value);
+        }
+
         protected void SetProperty<T>(ref T backingStore, in T value, in System.Action onChanged = null, [CallerMemberName] in string propertyname = "")
         {
             if (EqualityComparer<T>.Default.Equals(backingStore, value))
