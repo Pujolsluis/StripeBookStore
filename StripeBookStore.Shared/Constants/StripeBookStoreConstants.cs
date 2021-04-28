@@ -29,7 +29,7 @@ namespace StripeBookStore.Shared.Constants
         {
             new Book()
             {
-                Sku = "prod_JCW2A3ChYHeMUv",
+                Sku = "prod_JNp7uhuRtaGr1X",
                 Name = "Harry Potter And The Sorcerer's Stone",
                 Price = 999,
                 Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque accumsan urna a nisi elementum, id vulputate tortor fringilla.",
@@ -38,7 +38,7 @@ namespace StripeBookStore.Shared.Constants
             },
             new Book()
             {
-                Sku = "book_2x332",
+                Sku = "prod_JNp8wZxlRFKcwE",
                 Name = "Don Quixote",
                 Price = 199,
                 Description = "Sed vitae eleifend nisi. Etiam metus odio, dapibus luctus dapibus non, porta fermentum velit.",
@@ -47,7 +47,7 @@ namespace StripeBookStore.Shared.Constants
             },
             new Book()
             {
-                Sku = "book_7x142",
+                Sku = "prod_JNpA3LGxfIU9BA",
                 Name = "The Little Prince",
                 Price = 1099,
                 Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque accumsan urna a nisi elementum, id vulputate tortor fringilla.",
@@ -56,7 +56,7 @@ namespace StripeBookStore.Shared.Constants
             },
             new Book()
             {
-                Sku = "book_11x77",
+                Sku = "prod_JNpBWMwpBM9RTX",
                 Name = "The Great Gatsby",
                 Price = 1199,
                 Description = "Sed vitae eleifend nisi. Etiam metus odio, dapibus luctus dapibus non, porta fermentum velit.",
@@ -65,7 +65,7 @@ namespace StripeBookStore.Shared.Constants
             },
             new Book()
             {
-                Sku = "book_3x12",
+                Sku = "prod_JNpBvIRIoygDwC",
                 Name = "Moby Dick",
                 Price = 379,
                 Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque accumsan urna a nisi elementum, id vulputate tortor fringilla.",
@@ -74,7 +74,7 @@ namespace StripeBookStore.Shared.Constants
             },
             new Book()
             {
-                Sku = "book_3x12",
+                Sku = "prod_JNp7uhuRtaGr1X",
                 Name = "Harry Potter And The Sorcerer's Stone",
                 Price = 999,
                 Description = "Sed vitae eleifend nisi. Etiam metus odio, dapibus luctus dapibus non, porta fermentum velit.",
@@ -83,7 +83,7 @@ namespace StripeBookStore.Shared.Constants
             },
             new Book()
             {
-                Sku = "book_2x332",
+                Sku = "prod_JNp8wZxlRFKcwE",
                 Name = "Don Quixote",
                 Price = 199,
                 Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque accumsan urna a nisi elementum, id vulputate tortor fringilla.",
@@ -92,7 +92,7 @@ namespace StripeBookStore.Shared.Constants
             },
             new Book()
             {
-                Sku = "book_7x142",
+                Sku = "prod_JNpA3LGxfIU9BA",
                 Name = "The Little Prince",
                 Price = 1099,
                 Description = "Sed vitae eleifend nisi. Etiam metus odio, dapibus luctus dapibus non, porta fermentum velit.",
@@ -101,7 +101,7 @@ namespace StripeBookStore.Shared.Constants
             },
             new Book()
             {
-                Sku = "book_11x77",
+                Sku = "prod_JNpBWMwpBM9RTX",
                 Name = "The Great Gatsby",
                 Price = 1199,
                 Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque accumsan urna a nisi elementum, id vulputate tortor fringilla.",
@@ -110,7 +110,7 @@ namespace StripeBookStore.Shared.Constants
             },
             new Book()
             {
-                Sku = "book_3x12",
+                Sku = "prod_JNpBvIRIoygDwC",
                 Name = "Moby Dick",
                 Price = 379,
                 Description = "Sed vitae eleifend nisi. Etiam metus odio, dapibus luctus dapibus non, porta fermentum velit.",

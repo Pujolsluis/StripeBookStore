@@ -7,6 +7,7 @@ using StripeBookStore.Shared.Configuration;
 using StripeBookStore.Shared.Interfaces;
 using StripeBookStore.Shared.Models.DTOs;
 using System.Linq;
+using StripeBookStore.Shared.Constants;
 
 namespace StripeBookStore.API.Services
 {
@@ -29,9 +30,13 @@ namespace StripeBookStore.API.Services
             if (productPrice == null)
                 return null;
 
+            //Apply 8.25 Sales Tax to product
+            long orderTaxAmount = (long)((decimal)productPrice.UnitAmount / 100 * (decimal)0.0825 * 100);
+            long orderTotal = (long)(productPrice.UnitAmount + orderTaxAmount);
+
             var options = new PaymentIntentCreateOptions
             {
-                Amount = productPrice.UnitAmount,
+                Amount = orderTotal,
                 Currency = "usd",
                 Customer = request.Customer,
             };
@@ -40,6 +45,18 @@ namespace StripeBookStore.API.Services
             PaymentIntent paymentIntent = await paymentService.CreateAsync(options);
 
             return new CreatePaymentIntentResponse{ Id = paymentIntent.Id,ClientSecret = paymentIntent.ClientSecret };
+        }
+
+
+        long GetProductPriceFromMemory(CreatePaymentIntentRequest request)
+        {
+            return StripeBookStoreConstants.BooksCollection.Where(book => book.Sku.Equals(request.Sku)).FirstOrDefault().Price;
+        }
+
+        async Task<long> GetProductPriceFromStripe(CreatePaymentIntentRequest request)
+        {
+            
+            return (long)productPrice.UnitAmount;
         }
 
         public async Task<StripeList<Customer>> GetCustomersAsync(string customerId = "", string startingAfter = "", int pageSize = 25)
