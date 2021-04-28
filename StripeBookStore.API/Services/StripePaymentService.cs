@@ -47,18 +47,6 @@ namespace StripeBookStore.API.Services
             return new CreatePaymentIntentResponse{ Id = paymentIntent.Id,ClientSecret = paymentIntent.ClientSecret };
         }
 
-
-        long GetProductPriceFromMemory(CreatePaymentIntentRequest request)
-        {
-            return StripeBookStoreConstants.BooksCollection.Where(book => book.Sku.Equals(request.Sku)).FirstOrDefault().Price;
-        }
-
-        async Task<long> GetProductPriceFromStripe(CreatePaymentIntentRequest request)
-        {
-            
-            return (long)productPrice.UnitAmount;
-        }
-
         public async Task<StripeList<Customer>> GetCustomersAsync(string customerId = "", string startingAfter = "", int pageSize = 25)
         {
             var options = new CustomerListOptions
