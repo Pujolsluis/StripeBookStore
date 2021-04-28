@@ -12,6 +12,9 @@ using System.Linq;
 using System.Collections.Generic;
 using System.IO;
 using StripeBookStore.Shared.Interfaces;
+using Microsoft.AspNetCore.SignalR;
+using StripeBookStore.API.Hubs;
+using StripeBookStore.Shared.Models;
 
 namespace StripeBookStore.API.Controllers
 {
@@ -24,13 +27,15 @@ namespace StripeBookStore.API.Controllers
         private readonly ILogger<PaymentIntentsController> _logger;
         private readonly IOptions<StripeOptions> _options;
         private readonly IPaymentService _stripePaymentService;
+        private readonly IHubContext<PaymentsHub, IPaymentsHub> _paymentsHub;
 
         public PaymentIntentsController(ILogger<PaymentIntentsController> logger, IOptions<StripeOptions> options,
-                                  IPaymentService stripePaymentService)
+                                  IPaymentService stripePaymentService, IHubContext<PaymentsHub, IPaymentsHub> paymentsHub)
         {
             _logger = logger;
             _options = options;
             _stripePaymentService = stripePaymentService;
+            _paymentsHub = paymentsHub;
         }
 
         /// <summary>
@@ -109,6 +114,8 @@ namespace StripeBookStore.API.Controllers
             if(stripeEvent.Type == "charge.succeeded")
             {
                 var charge = stripeEvent.Data.Object as Stripe.Charge;
+                //Send Payment Event to Clients
+                await _paymentsHub.Clients.All.SendPaymentEvent(new PaymentEvent { Id = charge.Id, Amount = charge.Amount});
                 _logger.LogDebug($"Payment completed of ${charge.Amount/100} with charge ID {charge.Id}");
             }
 

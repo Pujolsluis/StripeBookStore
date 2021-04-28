@@ -12,6 +12,7 @@ using StripeBookStore.ViewModels;
 using Xamarin.Essentials.Implementation;
 using Xamarin.Essentials.Interfaces;
 using Xamarin.Forms;
+using Microsoft.AspNetCore.SignalR.Client;
 
 namespace StripeBookStore
 {
@@ -36,6 +37,8 @@ namespace StripeBookStore
             containerRegistry.RegisterForNavigation<CheckoutPage, CheckoutPageViewModel>();
             containerRegistry.RegisterForNavigation<AddCardPaymentMethodPage, AddCardPaymentMethodViewModel>();
 
+            //HubConnection paymentsHubConnection = new HubConnectionBuilder().WithUrl(StripeBookStoreConstants.PaymentEventsHubUrl).Build();
+
             IStripeBookStoreApi stripeBookStoreApiClient = RefitExtensions.For<IStripeBookStoreApi>(BaseApiService.CreateHttpClient(StripeBookStoreConstants.StripeBookStoreBaseUrl));
 
             //Services
@@ -44,6 +47,7 @@ namespace StripeBookStore
             containerRegistry.RegisterSingleton<IConnectivity, ConnectivityImplementation>();
             containerRegistry.RegisterSingleton<IMainThread, MainThreadImplementation>();
             containerRegistry.Register<IApiManager, ApiManager>();
+            //containerRegistry.RegisterInstance(paymentsHubConnection);
             containerRegistry.RegisterInstance(stripeBookStoreApiClient);
         }
     }

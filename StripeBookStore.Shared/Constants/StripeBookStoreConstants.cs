@@ -5,13 +5,23 @@ namespace StripeBookStore.Shared.Constants
 {
     public static class StripeBookStoreConstants
     {
-        public const string StripeBookStoreBaseUrl = "http://localhost:42424/api";
-        //Android localhost
-        //public const string StripeBookStoreBaseUrl = "http://10.0.2.2:42424/api";
+        //iOS Emulator localhost
+        //public const string StripeBookStoreBaseUrl = "http://localhost:42424/api";
+        //Android Emulator localhost
+        public const string StripeBookStoreBaseUrl = "http://10.0.2.2:42424/api";
+
 
         #region Settings and Secure Storage Constants
         public const string SettingPublishableKey = "publishable_key";
         public const string SettingIsFirstTime = "is_first_time";
+        #endregion
+
+        #region Hubs and HubResponses
+        //iOS Emulator Base URL
+        public const string PaymentEventsHubUrl = "http://localhost:42424/hubs/paymentEvents";
+        //Android Emulator Base Url
+        //public const string PaymentEventsHubUrl = "http://10.0.2.2:42424/hubs/paymentEvents";
+        public const string SendPaymentEventsHubResponse = "SendPaymentEvent";
         #endregion
 
 

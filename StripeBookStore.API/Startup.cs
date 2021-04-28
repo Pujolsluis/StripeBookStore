@@ -20,6 +20,7 @@ using System.IO;
 using Stripe;
 using StripeBookStore.Shared.Interfaces;
 using StripeBookStore.API.Services;
+using StripeBookStore.API.Hubs;
 
 namespace StripeBookStore.API
 {
@@ -65,6 +66,9 @@ namespace StripeBookStore.API
                     NamingStrategy = new CamelCaseNamingStrategy(),
                 };
             });
+
+            services.AddSignalR();
+
             services.AddTransient<IStripeClient>(serviceProvider => new StripeClient(Environment.GetEnvironmentVariable("STRIPE_SECRET_KEY")));
             services.AddTransient<IPaymentService, StripeApiPaymentService>();
         }
@@ -77,7 +81,7 @@ namespace StripeBookStore.API
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
 
             app.UseRouting();
 
@@ -86,6 +90,7 @@ namespace StripeBookStore.API
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHub<PaymentsHub>("/hubs/paymentEvents");
             });
 
             app.UseSwagger();

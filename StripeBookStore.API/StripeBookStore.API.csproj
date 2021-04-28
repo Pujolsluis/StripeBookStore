@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Services\" />
+    <Folder Include="Hubs\" />
   </ItemGroup>
   <Import Project="..\StripeBookStore.Shared\StripeBookStore.Shared.projitems" Label="Shared" Condition="Exists('..\StripeBookStore.Shared\StripeBookStore.Shared.projitems')" />
 </Project>

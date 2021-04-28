@@ -29,5 +29,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Models\DTOs\PublicKeyResponse.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Card.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\DTOs\CreatePaymentIntentResponse.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\PaymentEvent.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Interfaces\IPaymentsHub.cs" />
   </ItemGroup>
 </Project>
