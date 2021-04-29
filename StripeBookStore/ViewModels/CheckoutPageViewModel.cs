@@ -28,7 +28,6 @@ namespace StripeBookStore.ViewModels
         readonly IMainThread _mainThread;
         readonly HubConnection hubConnection;
         CreatePaymentIntentResponse _paymentIntent;
-        Card _cardPaymentMethod;
         TaskCompletionSource<PaymentEvent> _paymentChargeEventCompletedTcs;
 
         public CheckoutPageViewModel(INavigationService navigationService, IPreferences preferences, IMainThread mainThread, IApiManager apiManager) : base(navigationService)
@@ -44,7 +43,7 @@ namespace StripeBookStore.ViewModels
                 await NavigationService.NavigateAsync(NavigationConstants.AddPaymentMethod);
             });
 
-            OnConfirmPaymentCommand = new DelegateCommand(() => ConfirmPaymentIntent(_paymentIntent, _cardPaymentMethod).SafeFireAndForget());
+            OnConfirmPaymentCommand = new DelegateCommand(() => ConfirmPaymentIntent(_paymentIntent, Card).SafeFireAndForget());
 
             hubConnection = new HubConnectionBuilder().WithUrl(StripeBookStoreConstants.PaymentEventsHubUrl).Build();
             hubConnection.On<PaymentEvent>(StripeBookStoreConstants.SendPaymentEventsHubResponse, OnReceivedPaymentEvent);
@@ -60,11 +59,23 @@ namespace StripeBookStore.ViewModels
             set => SetProperty(ref _pageTitle, value);
         }
 
+        public bool IsPaymentEnabled
+        {
+            get => !string.IsNullOrEmpty(Card?.Number);
+        }
+
         Book _book;
         public Book Book
         {
             get => _book;
             set => SetProperty(ref _book, value);
+        }
+
+        Card _card;
+        public Card Card
+        {
+            get => _card;
+            set => SetProperty(ref _card, value, () => OnPropertyChanged(nameof(IsPaymentEnabled)));
         }
 
         long _orderSubTotalAmount;
@@ -264,8 +275,8 @@ namespace StripeBookStore.ViewModels
         {
             if(parameters.ContainsKey(NavigationDataConstants.Card))
             {
-                _cardPaymentMethod = parameters.GetValue<Card>(NavigationDataConstants.Card);
-                PaymentMethod = $"ending on {_cardPaymentMethod.Number.Substring(_cardPaymentMethod.Number.Length - 4)}";
+                Card = parameters.GetValue<Card>(NavigationDataConstants.Card);
+                PaymentMethod = $"ending on {Card.Number.Substring(Card.Number.Length - 4)}";
             }
         }
 

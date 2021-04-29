@@ -164,6 +164,7 @@
                     Grid.Row="16"
                     Grid.ColumnSpan="4"
                     Command="{Binding OnConfirmPaymentCommand}"
+                    IsEnabled="{Binding IsPaymentEnabled}"
                     Text="{Binding PayAmount}"
                     VerticalOptions="EndAndExpand" />
             </Grid>
