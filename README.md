@@ -18,7 +18,7 @@ The Client Apps users are notified in realtime that a successful charge has been
 |Xamarin.Android|API 21+|
 
 #### Solution Structure
-
+![StripeBookStore Project Structure](https://github.com/Pujolsluis/StripeBookStore/blob/main/Images/ProjectStructureStripeBookStore.png?raw=true)
 
 ### Challenges
 In order to complete the assignment, I had to **learn all the fundamentals about Stripe** how their payment infraestructure works. The initial challenge I faced was not having worked previously with the product but I was really pleased to have found alot of great documentation, guides and a extensive API reference I could leverage to get an understanding of the product and the common payment use cases it supports.
