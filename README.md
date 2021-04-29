@@ -50,12 +50,14 @@ The current state of the project is not production ready and is more of a POC th
         - **Send Email Receipts** - Users receive an email receipt of their purchase.
         - **Localization** - App should be localized for all the markets it wishes to support.
         - **Authentication Flow** - Users should be able to register and sign in to the app before being able to purchase (User must have a stripe customer associated to support features other features of stripe like saving payment methods, shipping method, and associating transactions to the account).
-
+        - **Implement Analytics and Crash reporting** - Leverage AppCenter to collect realtime crashes and user events data from our client apps.
 
 ## Useful References for completing project
 - [Stripe API Reference](https://stripe.com/docs/api?lang=dotnet)
 - [Online Payments guides - Stripe](https://stripe.com/docs/payments/cards/overview)
 - [Payment Method guides - Stripe](https://stripe.com/docs/payments/payment-methods/overview)
+- [Event Types - Stripe](https://stripe.com/docs/api/events/types)
+- [Webhooks guide - Stripe](https://stripe.com/docs/webhooks/build)
 - [.NET Core Starter - Stripe Office Hours](https://www.youtube.com/watch?v=2-mMOB8MhmE)
 
 ## Dev Tools Used
