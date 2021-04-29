@@ -1,12 +1,12 @@
 # StripeBookStore
-Simple e-commerce application, that allows a customer to purchase a book utilizing Stripe as our Payments infraestructure. The solution consist of 2 main projects (Backend server and Mobile client apps for iOS and Android):
+Simple e-commerce application, that allows a customer to purchase a book utilizing Stripe as our Payments infrastructure. The solution consist of 2 main projects (Backend server and Mobile client apps for iOS and Android):
 
 ### About Solution
-The solution leverages Stripe’s .NET Library, which is used on the server side to handle creating payment intents for products selected in the client app; thus providing a client secret that allows our users to confirm their payments on the client once they have created and selected a valid card payment method. I used the **Stripe Payments and PaymentMethod API's** for the basic InMemory Data Flow.
+The solution leverages `Stripe’s .NET` Library, which is used on the server side to handle creating payment intents for products selected in the client app; thus providing a client secret that allows our users to confirm their payments on the client once they have created and selected a valid card payment method. I used the **Stripe Payments and PaymentMethod API's** for the basic InMemory Data Flow.
 
 You can also enable an **optional flow** using Products stored on your test Stripe account that makes use of the **Products, and Prices API's** to get the most up to date price for the product before the purchase is complete.
 
-The Client Apps users are notified in realtime that a successful charge has been made by using a Webhook that listens to the "charge.succeeded" StripeEvent in conjunction with a SignalR Hub.
+The Client Apps users are notified in realtime that a successful charge has been made by using a Webhook that listens to the "charge.succeeded" StripeEvent in conjunction with a `SignalR` Hub.
 
 | iOS | Android |
 | :--: | :--: |
@@ -48,7 +48,7 @@ The CLI will print a webhook secret key to the console. Set `STRIPE_WEBHOOK_SECR
 ![StripeBookStore Project Structure](Images/ProjectStructureStripeBookStore.png)
 
 ### Challenges
-In order to complete the assignment, I had to **learn all the fundamentals about Stripe** how their payment infraestructure works. The initial challenge I faced was not having worked previously with the product but I was really pleased to have found alot of great documentation, guides and a extensive API reference I could leverage to get an understanding of the product and the common payment use cases it supports.
+In order to complete the assignment, I had to **learn all the fundamentals about Stripe** how their payment infrastructure works. The initial challenge I faced was not having worked previously with the product but I was really pleased to have found alot of great documentation, guides and a extensive API reference I could leverage to get an understanding of the product and the common payment use cases it supports.
 
 I decided to use `Xamarin.Forms` as my client app solution and found that **Stripe does not have official up to date Xamarin Bindings** for their iOS and Android Native SDK's, I could not leverage their prebuilt UI's unless I wanted to invest time on creating the Xamarin Bindings and create the abstractions to use it seamlessly from the Shared Xamarin.Forms project, I felt this was out of scope for this project and decided to use the .NET Stripe Library, build custom screens and implement the payment flow accordingly.
 
