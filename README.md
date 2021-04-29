@@ -8,7 +8,22 @@ You can also enable an **optional flow** using Products stored on your test Stri
 
 The Client Apps users are notified in realtime that a successful charge has been made by using a Webhook that listens to the "charge.succeeded" StripeEvent in conjunction with a SignalR Hub.
 
-**Platforms Supported**
+#### Setup Demo
+- Create **.env** file in root of **StripeBookStore.API** project, that contains your Stripe account Keys. (Secret Key, Publishable Key and Webhook Secret Key)
+```env
+STRIPE_PUBLISHABLE_KEY=<replace-with-your-publishable-key>
+STRIPE_SECRET_KEY=<replace-with-your-secret-key>
+STRIPE_WEBHOOK_SECRET_KEY=<replace-with-your-secret-key>
+```
+
+- Listen and Forward Stripe Webhook events to our local server, in order for the payment confirmation to work.
+Make sure to install the [Stripe CLI](https://stripe.com/docs/stripe-cli) and [link your Stripe account](https://stripe.com/docs/stripe-cli#link-account):
+```bash
+stripe listen --forward-to http://localhost:42424/api/PaymentIntents/webhook
+```
+The CLI will print a webhook secret key to the console. Set `STRIPE_WEBHOOK_SECRET` to this value in your .env file.
+
+#### Platforms Supported
 
 |Platform|Version|
 | ------------------- | :------------------: |

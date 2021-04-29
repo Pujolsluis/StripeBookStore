@@ -36,6 +36,7 @@
     <Folder Include="Resources\" />
     <Folder Include="Controls\" />
     <Folder Include="Services\" />
+    <Folder Include="Configuration\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Resources\Roboto-Bold.ttf" />

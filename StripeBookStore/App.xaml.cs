@@ -5,7 +5,6 @@ using Prism.Ioc;
 using StripeBookStore.Pages;
 using StripeBookStore.Services;
 using StripeBookStore.Shared;
-using StripeBookStore.Shared.Constants;
 using StripeBookStore.Shared.Interfaces;
 using StripeBookStore.Shared.Services;
 using StripeBookStore.ViewModels;
@@ -13,6 +12,7 @@ using Xamarin.Essentials.Implementation;
 using Xamarin.Essentials.Interfaces;
 using Xamarin.Forms;
 using Microsoft.AspNetCore.SignalR.Client;
+using StripeBookStore.Configuration;
 
 namespace StripeBookStore
 {
@@ -39,7 +39,7 @@ namespace StripeBookStore
 
             //HubConnection paymentsHubConnection = new HubConnectionBuilder().WithUrl(StripeBookStoreConstants.PaymentEventsHubUrl).Build();
 
-            IStripeBookStoreApi stripeBookStoreApiClient = RefitExtensions.For<IStripeBookStoreApi>(BaseApiService.CreateHttpClient(StripeBookStoreConstants.StripeBookStoreBaseUrl));
+            IStripeBookStoreApi stripeBookStoreApiClient = RefitExtensions.For<IStripeBookStoreApi>(BaseApiService.CreateHttpClient(Config.StripeBookStoreBaseUrl));
 
             //Services
             containerRegistry.RegisterSingleton<IPreferences, PreferencesImplementation>();

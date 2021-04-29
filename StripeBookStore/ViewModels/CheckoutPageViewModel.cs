@@ -10,6 +10,7 @@ using Newtonsoft.Json;
 using Prism.Commands;
 using Prism.Navigation;
 using Stripe;
+using StripeBookStore.Configuration;
 using StripeBookStore.Services;
 using StripeBookStore.Shared.Constants;
 using StripeBookStore.Shared.Models;
@@ -45,8 +46,8 @@ namespace StripeBookStore.ViewModels
 
             OnConfirmPaymentCommand = new DelegateCommand(() => ConfirmPaymentIntent(_paymentIntent, Card).SafeFireAndForget());
 
-            hubConnection = new HubConnectionBuilder().WithUrl(StripeBookStoreConstants.PaymentEventsHubUrl).Build();
-            hubConnection.On<PaymentEvent>(StripeBookStoreConstants.SendPaymentEventsHubResponse, OnReceivedPaymentEvent);
+            hubConnection = new HubConnectionBuilder().WithUrl(Config.PaymentEventsHubUrl).Build();
+            hubConnection.On<PaymentEvent>(Config.SendPaymentEventsHubResponse, OnReceivedPaymentEvent);
         }
 
         public DelegateCommand OnSelectPaymentMethodCommand { get; set; }
