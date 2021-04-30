@@ -37,8 +37,6 @@ namespace StripeBookStore
             containerRegistry.RegisterForNavigation<CheckoutPage, CheckoutPageViewModel>();
             containerRegistry.RegisterForNavigation<AddCardPaymentMethodPage, AddCardPaymentMethodViewModel>();
 
-            //HubConnection paymentsHubConnection = new HubConnectionBuilder().WithUrl(StripeBookStoreConstants.PaymentEventsHubUrl).Build();
-
             IStripeBookStoreApi stripeBookStoreApiClient = RefitExtensions.For<IStripeBookStoreApi>(BaseApiService.CreateHttpClient(Config.StripeBookStoreBaseUrl));
 
             //Services
@@ -47,7 +45,6 @@ namespace StripeBookStore
             containerRegistry.RegisterSingleton<IConnectivity, ConnectivityImplementation>();
             containerRegistry.RegisterSingleton<IMainThread, MainThreadImplementation>();
             containerRegistry.Register<IApiManager, ApiManager>();
-            //containerRegistry.RegisterInstance(paymentsHubConnection);
             containerRegistry.RegisterInstance(stripeBookStoreApiClient);
         }
     }

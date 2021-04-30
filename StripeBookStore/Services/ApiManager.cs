@@ -64,19 +64,29 @@ namespace StripeBookStore.Services
             return await task;
         }
 
-        public Task<HttpResponseMessage> GetCustomers(CancellationTokenSource cts, string startingAfter = "", int pageSize = 25)
+        public async Task<HttpResponseMessage> GetCustomers(CancellationTokenSource cts, string startingAfter = "", int pageSize = 25)
         {
-            throw new NotImplementedException();
+
+            var task = AttemptAndRetry(() => _stripeBookStoreApi.GetCustomers(startingAfter, pageSize), cts.Token);
+            runningTasks.Add(task.Id, cts);
+
+            return await task;
         }
 
-        public Task<HttpResponseMessage> GetProducts(CancellationTokenSource cts, string startingAfter = "", int pageSize = 25)
+        public async Task<HttpResponseMessage> GetProducts(CancellationTokenSource cts, string startingAfter = "", int pageSize = 25)
         {
-            throw new NotImplementedException();
+            var task = AttemptAndRetry(() => _stripeBookStoreApi.GetProducts(startingAfter, pageSize), cts.Token);
+            runningTasks.Add(task.Id, cts);
+
+            return await task;
         }
 
-        public Task<HttpResponseMessage> GetPaymentIntents(CancellationTokenSource cts, string startingAfter = "", int pageSize = 25)
+        public async Task<HttpResponseMessage> GetPaymentIntents(CancellationTokenSource cts, string startingAfter = "", int pageSize = 25)
         {
-            throw new NotImplementedException();
+            var task = AttemptAndRetry(() => _stripeBookStoreApi.GetPaymentIntents(startingAfter, pageSize), cts.Token);
+            runningTasks.Add(task.Id, cts);
+
+            return await task;
         }
     }
 }

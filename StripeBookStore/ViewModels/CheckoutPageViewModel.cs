@@ -283,7 +283,9 @@ namespace StripeBookStore.ViewModels
 
         public void Destroy()
         {
+            DisconnectPaymentsHub().SafeFireAndForget();
             hubConnection.DisposeAsync().SafeFireAndForget();
         }
+        
     }
 }
